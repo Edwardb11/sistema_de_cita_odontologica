@@ -13,8 +13,8 @@ _Salud_
 
 
 ### Lenguaje de programación a utilizar 
-_JavaScript en el frontend_
+_JavaScript en el frontend_  
 _Nodejs en el backend_
 
-### Base de datos a utilizar y porque
+### Base de datos a utilizar 
 _Mysql_
