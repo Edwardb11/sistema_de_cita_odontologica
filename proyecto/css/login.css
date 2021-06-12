@@ -12,7 +12,7 @@ body {
 }
 
 .ads {
-  background-image: url(./_recursos_/login.jpg);
+  background-image: url(../img/login.jpg);
   background-size: cover;
   background-color: #82a7ec;
   border-top-left-radius: 5px;
