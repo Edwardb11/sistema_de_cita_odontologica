@@ -1,2 +1,9 @@
 recursos/ 
 .DS_Store
+# Created by https://www.toptal.com/developers/gitignore/api/node.macos
+# Edit at https://www.toptal.com/developers/gitignore?templates=node.macos
+
+#!! ERROR: node.macos is undefined. Use list command to see defined gitignore types !!#
+
+# End of https://www.toptal.com/developers/gitignore/api/node.macos
+node_modules/
