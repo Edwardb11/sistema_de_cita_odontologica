@@ -9,7 +9,7 @@ _Sistema de cita donde el administrador( Doctor) puede ver las cita ya registrad
 _Perfect teeth_
 
 ### Logo del proyecto 
-<img align="" alt="name" width="40%" heihg="40%" src="./img/logo.png" />
+<img align="" alt="name" width="40%" heihg="40%" src="./src/img/logo.png" />
 
 ### Área a la que va dirigido
 
