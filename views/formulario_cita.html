@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cita Odontológica</title>
+    <link rel="shortcut icon" href="../src/img/logo.png" type="image/x-icon" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="../src/css/form.css" />
+    <!-- Bootstrap -->
+    <link
+      href="../src/css/lib/bootstrap/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./src/css/lib/fontawesome/css/all.min.css" />
+  </head>
+  <body>
+    <h1 class="Form">F<span>ormulario de citas odontológica</span></h1>
+
+    <form class="agenda">
+      <h2>Hacer una cita</h2>
+      <label class="size"> Nombre del paciente </label><br />
+      <input class="control" type="text" /> <br />
+
+      <label class="size">Edad</label><br />
+      <input class="control" type="number" /><br />
+
+      <label class="size">Género</label><br />
+      <select class="controll" name="Género">
+        <option class="controll" value="1"></option>
+        <option class="controll" value="2">Femenino</option>
+        <option class="controll" value="3">Masculino</option>
+      </select>
+
+      <br />
+
+      <label class="size">Dirección</label><br />
+      <input class="control" type="text" /> <br />
+
+      <label class="size">Número de Teléfono</label><br />
+      <input class="control" type="" /><br />
+
+      <label class="size">E-mail</label><br />
+      <input class="control" type="email" /><br />
+
+      <label class="size">Seleccionar fecha</label><br />
+      <input class="control" type="date" /><br />
+
+      <label class="size">Hora</label><br />
+      <input class="control" type="" /><br />
+
+      <label class="size">Motivo de cita</label><br />
+      <input class="control" /><br />
+
+      <input class="boton" type="submit" value="Enviar Consulta" />
+    </form>
+    <img src="../src/img/doctor.jpg" class="img" />
+  </body>
+</html>
