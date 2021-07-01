@@ -40,14 +40,17 @@
         <ul>
           <li class="accordion">
 
-          <li><a href="#"><span class="icon-location-arrow mr-3"></span> <i class="far fa-calendar-check"></i> Citas
+          <li><a href="index.html"><span class="icon-location-arrow mr-3"></span> <i class="far fa-calendar-check"></i>
+              Citas
               pendientes
             </a></li>
-          <li><a href="#"><span class="icon-location-arrow mr-3"></span><i class="fas fa-user-md"></i> Doctores</a></li>
+          <li><a href="doctores.html"><span class="icon-location-arrow mr-3"></span><i class="fas fa-user-md"></i>
+              Dentistas</a></li>
           <li><a href="calendar.html"><span class="icon-pie-chart mr-3"></span> <i class="far fa-calendar-alt"></i>
               Calendario</a>
           </li>
-          <li><a href="#"><span class="icon-sign-out mr-3"></span><i class="fas fa-sign-out-alt"></i> Cerrar sesión </a>
+          <li><a href="cerrar.html"><span class="icon-sign-out mr-3"></span><i class="fas fa-sign-out-alt"></i> Cerrar
+              sesión </a>
           </li>
         </ul>
       </div>
@@ -60,11 +63,51 @@
         <div class="row justify-content-center">
           <div class="col-md-12">
             <div class="content-box-large">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-12 text-info">
-                    Texto
+              <div>
+                <ol class=" breadcrumb bg-white">
+                  <li class="breadcrumb-item active">
+                    Inicio
+                  </li>
+                </ol>
 
+              </div>
+              <div class="content-box-large">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12 text-info">
+                      <div class="p-3 mb-2 bg-primary text-white text-center">Citas pendientes</div>
+                      <!-- Tablas -->
+                      <table class="table table-responsive table-striped">
+                        <thead>
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>Consulta</th>
+                            <th>Fecha de la Cita</th>
+                            <th>Hora de la Cita</th>
+                            <th>Dentista</th>
+                            <th>Comentario </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Edward</td>
+                            <td>Brito</td>
+                            <td>19</td>
+                            <td>Empastes</td>
+                            <td>11/08/2021</td>
+                            <td>10:00Am</td>
+                            <td>Francisco Rosario</td>
+                            <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar"
+                                name="editar"
+                                href="Hacer-Tarea-Student.php?accion=UDT&id=<?php echo $row1['idtarea'] ?>">
+                                <i class="fas fa-edit"></i> </a> </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
                   </div>
                 </div>
               </div>
@@ -72,7 +115,6 @@
           </div>
         </div>
       </div>
-    </div>
 
   </main>
 
