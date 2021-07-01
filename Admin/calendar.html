@@ -24,6 +24,7 @@
 <body>
 
 
+
 	<aside class="sidebar">
 		<div class="toggle">
 			<a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
@@ -40,16 +41,20 @@
 				<ul>
 					<li class="accordion">
 
-					<li><a href="#"><span class="icon-location-arrow mr-3"></span> <i class="far fa-calendar-check"></i>
+					<li><a href="index.html"><span class="icon-location-arrow mr-3"></span> <i
+								class="far fa-calendar-check"></i>
 							Citas
 							pendientes
 						</a></li>
-					<li><a href="#"><span class="icon-location-arrow mr-3"></span><i class="fas fa-user-md"></i>
-							Doctores</a></li>
-					<li><a href="#"><span class="icon-pie-chart mr-3"></span> <i class="far fa-calendar-alt"></i>
+					<li><a href="doctores.html"><span class="icon-location-arrow mr-3"></span><i
+								class="fas fa-user-md"></i>
+							Dentistas</a></li>
+					<li><a href="calendar.html"><span class="icon-pie-chart mr-3"></span> <i
+								class="far fa-calendar-alt"></i>
 							Calendario</a>
 					</li>
-					<li><a href="#"><span class="icon-sign-out mr-3"></span><i class="fas fa-sign-out-alt"></i> Cerrar
+					<li><a href="cerrar.html"><span class="icon-sign-out mr-3"></span><i
+								class="fas fa-sign-out-alt"></i> Cerrar
 							sesión </a>
 					</li>
 				</ul>
@@ -57,15 +62,30 @@
 		</div>
 
 	</aside>
+
+
 	<main class="bg bg-white">
 		<div class="site-section ">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-12">
 						<div class="content-box-large">
+							<div>
+								<ol class=" breadcrumb bg-white">
+									<li class="breadcrumb-item">
+										<a href="index.html">Inicio</a>
+									</li>
+									<li class="breadcrumb-item active">
+										Calendario
+									</li>
+								</ol>
+
+							</div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-12 text-info">
+										<div class="p-3 mb-2 bg-info text-white text-center"> Calendario de Citas
+										</div>
 										<div id='calendar'></div>
 									</div>
 								</div>
