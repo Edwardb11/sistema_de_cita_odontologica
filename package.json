@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "_Sistema de cita odontologica. Pensamos en hacer este proyecto ya que Yessica tiene tía que es odontóloga 🦷 y esto nos llamó la atención la forma en que toman la cita( la secretaria) y directamente aparece registrado en el programa de la doctora. Dicho esto el problema a resolver es el siguiente._",
   "main": "index.js",
+
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -19,7 +20,11 @@
   "bugs": {
     "url": "https://github.com/Edwardb11/sistema_de_cita_odontologica/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "export": "^0.1.337",
+    "import-modules": "^2.1.0",
+    "mysql": "^2.18.1"
+  },
   "devDependencies": {
     "gh-pages": "^3.2.0"
   }
