@@ -16,6 +16,8 @@ if (isset($_SESSION['id_doctor'])) {
 <html lang="en">
 
 <head>
+  <!-- ICONO -->
+  <link rel="icon" href="../src/img/logo.png" type="image/png" />
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

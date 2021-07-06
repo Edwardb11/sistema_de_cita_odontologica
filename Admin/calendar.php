@@ -16,6 +16,8 @@ if (isset($_SESSION['id_doctor'])) {
 <html lang="en">
 
 <head>
+	<!-- ICONO -->
+	<link rel="icon" href="../src/img/logo.png" type="image/png" />
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="../src/css/lib/bootstrap/css/bootstrap.min.css">
 
