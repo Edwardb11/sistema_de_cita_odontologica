@@ -1,15 +1,13 @@
 <?php
-include_once('php/consultas.php');
-include_once('php/conexionDB.php');
-
+include_once('./php/conexionDB.php');
+include_once('./php/consultas.php');
 //Este punto  luego de presionar el boton de login
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $vUsuario = trim(htmlspecialchars($_POST['username']));
   $vClave = trim(htmlspecialchars($_POST['password']));
   $vTipo = trim(htmlspecialchars($_POST['tipo']));
 
-  // echo "<br>  Hola " . $vUsuario . "-" . $vClave;
+  //echo "<br>  Hola " . $vUsuario . "-" . $vClave;
   validarLogin($link, $vUsuario, $vClave, $vTipo);
 }
 ?>
@@ -53,14 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="form-group">
             <label for="username" class="font-weight-bold">Tipo de usuario</label>
-            <select class="custom-select" name="tipo">
+            <select name="tipo" class="custom-select">
               <option>Paciente</option>
               <option>Administrador</option>
             </select>
           </div>
 
           <div class="form-group">
-            <button type="submit" name="ingresar" class="btn btn-primary btn-lg btn-block">
+            <button type="submit" name="ingresar" value="ingresar" class="btn btn-primary btn-lg btn-block">
               <i class="fas fa-sign-in-alt"></i> Iniciar sesión
             </button>
           </div>
