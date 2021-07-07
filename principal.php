@@ -56,20 +56,22 @@ if (isset($_SESSION['id_usuario'])) {
           <div class="container">
                <div class="row">
 
-                    <div class="col-md-4 col-sm-8">
-                         <p>Bienvenido <?php echo utf8_decode($row['usuario']); ?> a una atención odontologica profesional</p>
+                    <div class="col-md-4 col-sm-10">
+                         <p>Bienvenido <strong><?php echo utf8_decode($row['usuario']); ?> </strong></p>
                     </div>
 
-                    <div class="col-md-8 col-sm-7 text-align-right">
+                    <div class="col-md-8 col-sm-10 ">
                          <span class="phone-icon"><i class="fa fa-phone"></i> +1 (849) 856 4014</span>
                          <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 8:00 AM - 7:00 PM
                               (Lunes-Viernes)</span>
                          <span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">perfect-teeth00@hotmail.com</a></span>
-                         <a href="php/cerrar.php" class="badge"><i class="fas fa-sign-out-alt"></i> Cerrar Sesíon</a>
+                         <span><i class="fa fa-sign-out"></i><a href="./php/cerrar.php">Cerrar Sesíon </a></span>
+                         <!-- <a href="php/cerrar.php" class=""> Cerrar Sesíon</a> -->
 
                     </div>
 
                </div>
+
           </div>
      </header>
 
