@@ -295,19 +295,19 @@ header span {
 header span {
   font-weight: 500;
   display: inline-block;
-  padding: 11px 15px;
+  padding: 10px 15px;
 }
 
 header span.date-icon {
   border-left: 1px solid #f2f2f2;
   border-right: 1px solid #f2f2f2;
-  padding-right: 19px;
+  padding-right: 1px;
   padding-left: 19px;
 }
 
 header span i {
   color: #a5c422;
-  margin-right: 5px;
+  margin-right: 0px;
 }
 
 /*---------------------------------------
