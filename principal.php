@@ -3,8 +3,8 @@ include_once('./php/conexionDB.php');
 include_once('./php/consultas.php');
 
 
-if (isset($_SESSION['id_usuario'])) {
-     $vUsuario = $_SESSION['id_usuario'];
+if (isset($_SESSION['id_paciente'])) {
+     $vUsuario = $_SESSION['id_paciente'];
      $row = consultarPaciente($link, $vUsuario);
 } else {
      $_SESSION['MensajeTexto'] = "Error acceso al sistema  no registrado.";
@@ -57,7 +57,7 @@ if (isset($_SESSION['id_usuario'])) {
                <div class="row">
 
                     <div class="col-md-4 col-sm-10">
-                         <p>Bienvenido <strong><?php echo utf8_decode($row['usuario']); ?> </strong></p>
+                         <p>Bienvenido <strong><?php echo utf8_decode($row['nombre']); ?> </strong></p>
                     </div>
 
                     <div class="col-md-8 col-sm-10 ">

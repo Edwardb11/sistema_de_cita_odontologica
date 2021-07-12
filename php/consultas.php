@@ -2,12 +2,12 @@
 function validarLogin($link, $user, $pass, $tipo)
 {
     if ($tipo == "Paciente") {
-        $query = "SELECT * FROM `login` WHERE `correo_eletronico` = '$user' AND `clave` = '$pass'";
+        $query = "SELECT * FROM `pacientes` WHERE `correo_electronico` = '$user' AND `clave` = '$pass'";
         $resultado = mysqli_query($link, $query);
         if (mysqli_num_rows($resultado) == 1) {
             # code...
             $row = $resultado->fetch_assoc();
-            $_SESSION['id_usuario'] = $row['id_usuario'];
+            $_SESSION['id_paciente'] = $row['id_paciente'];
 
             $_SESSION['MensajeTexto'] = null;
             $_SESSION['MensajeTipo'] = null;
@@ -40,7 +40,7 @@ function validarLogin($link, $user, $pass, $tipo)
 
 function consultarPaciente($link, $id)
 {
-    $query = "SELECT * FROM `login` WHERE `id_usuario` = '$id'";
+    $query = "SELECT * FROM `pacientes` WHERE `id_paciente` = '$id'";
     $resultado = mysqli_query($link, $query);
 
     if (mysqli_num_rows($resultado) == 1) {
