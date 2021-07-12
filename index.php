@@ -49,13 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
           </div>
 
-          <div class="form-group">
-            <label for="username" class="font-weight-bold">Tipo de usuario</label>
-            <select name="tipo" class="custom-select">
-              <option>Paciente</option>
-              <option>Administrador</option>
-            </select>
+          <div class="form-check">
+            <input type="radio" name="tipo" value="Paciente" id="Paciente">
+            <label for="Paciente">Paciente</label>
+            <br>
+            <input type="radio" name="tipo" value="Administrador">
+            <label for="Administrador">Administrador</label>
           </div>
+
 
           <div class="form-group">
             <button type="submit" name="ingresar" value="ingresar" class="btn btn-primary btn-lg btn-block">
