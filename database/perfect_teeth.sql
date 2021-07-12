@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-07-2021 a las 21:05:18
+-- Tiempo de generación: 12-07-2021 a las 17:04:05
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -24,18 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cita`
+-- Estructura de tabla para la tabla `citas`
 --
 
-CREATE TABLE `cita` (
+CREATE TABLE `citas` (
   `id_cita` int(11) NOT NULL,
-  `id_usuario` int(255) NOT NULL,
-  `id_doctor` int(255) NOT NULL,
+  `id_paciente` int(11) NOT NULL,
+  `id_doctor` int(11) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `fecha_cita` date NOT NULL,
   `hora_cita` time NOT NULL,
-  `id_consultas` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_consultas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,7 @@ CREATE TABLE `cita` (
 CREATE TABLE `consultas` (
   `id_consultas` int(11) NOT NULL,
   `tipo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `consultas`
@@ -79,16 +79,16 @@ CREATE TABLE `doctor` (
   `correo_eletronico` varchar(255) NOT NULL,
   `clave` varchar(255) NOT NULL,
   `id_especialidad` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `doctor`
 --
 
 INSERT INTO `doctor` (`id_doctor`, `nombre`, `apellido`, `sexo`, `fecha_nacimiento`, `telefono`, `correo_eletronico`, `clave`, `id_especialidad`) VALUES
-(9, 'Francisco', 'Rosario', 'Masculino', '2001-07-05', '8097983519', 'franciscoRosario@hotmail.com', '1234', 2),
-(10, 'Stewar', 'Diaz', 'Masculino', '2000-07-16', '8099891736', 'Stewar@company.com', '1234', 3),
-(11, 'Alernis', 'Hernandez', 'Femenino', '2000-07-13', '8097686677', 'arlenis@company.com', '1234', 4);
+(1, 'Francisco', 'Rosario', 'Masculino', '2001-07-05', '8097983519', 'franciscoRosario@hotmail.com', '1234', 2),
+(2, 'Stewar', 'Diaz', 'Masculino', '2000-07-16', '8099891736', 'Stewar@company.com', '1234', 3),
+(3, 'Alernis', 'Hernandez', 'Femenino', '2000-07-13', '8097686677', 'arlenis@company.com', '1234', 4);
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ INSERT INTO `doctor` (`id_doctor`, `nombre`, `apellido`, `sexo`, `fecha_nacimien
 CREATE TABLE `especialidad` (
   `id_especialidad` int(11) NOT NULL,
   `tipo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `especialidad`
@@ -115,23 +115,23 @@ INSERT INTO `especialidad` (`id_especialidad`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `login`
+-- Estructura de tabla para la tabla `pacientes`
 --
 
-CREATE TABLE `login` (
-  `id_usuario` int(11) NOT NULL,
-  `usuario` varchar(255) NOT NULL,
+CREATE TABLE `pacientes` (
+  `id_paciente` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `telefono` varchar(50) NOT NULL,
-  `correo_eletronico` varchar(255) NOT NULL,
+  `correo_electronico` varchar(255) NOT NULL,
   `clave` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `login`
+-- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `login` (`id_usuario`, `usuario`, `apellido`, `telefono`, `correo_eletronico`, `clave`) VALUES
+INSERT INTO `pacientes` (`id_paciente`, `nombre`, `apellido`, `telefono`, `correo_electronico`, `clave`) VALUES
 (1, 'Edward', 'Brito Diaz', '8498779910', 'edwardbrito11@hotmail.com', '12'),
 (2, 'Yessica', 'Villavizar', '891892281', 'yessicavillavizar@hotmail.com', '12');
 
@@ -140,13 +140,13 @@ INSERT INTO `login` (`id_usuario`, `usuario`, `apellido`, `telefono`, `correo_el
 --
 
 --
--- Indices de la tabla `cita`
+-- Indices de la tabla `citas`
 --
-ALTER TABLE `cita`
+ALTER TABLE `citas`
   ADD PRIMARY KEY (`id_cita`),
-  ADD KEY `paciente-cita` (`id_usuario`),
+  ADD KEY `consultas-pacientes` (`id_consultas`),
   ADD KEY `doctor-cita` (`id_doctor`),
-  ADD KEY `consultas-pacientes` (`id_consultas`);
+  ADD KEY `paciente-cita` (`id_paciente`);
 
 --
 -- Indices de la tabla `consultas`
@@ -168,19 +168,19 @@ ALTER TABLE `especialidad`
   ADD PRIMARY KEY (`id_especialidad`);
 
 --
--- Indices de la tabla `login`
+-- Indices de la tabla `pacientes`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`id_usuario`);
+ALTER TABLE `pacientes`
+  ADD PRIMARY KEY (`id_paciente`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `cita`
+-- AUTO_INCREMENT de la tabla `citas`
 --
-ALTER TABLE `cita`
+ALTER TABLE `citas`
   MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -193,7 +193,7 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT de la tabla `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id_doctor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_doctor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `especialidad`
@@ -202,22 +202,22 @@ ALTER TABLE `especialidad`
   MODIFY `id_especialidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `login`
+-- AUTO_INCREMENT de la tabla `pacientes`
 --
-ALTER TABLE `login`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `pacientes`
+  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `cita`
+-- Filtros para la tabla `citas`
 --
-ALTER TABLE `cita`
+ALTER TABLE `citas`
   ADD CONSTRAINT `consultas-pacientes` FOREIGN KEY (`id_consultas`) REFERENCES `consultas` (`id_consultas`),
   ADD CONSTRAINT `doctor-cita` FOREIGN KEY (`id_doctor`) REFERENCES `doctor` (`id_doctor`),
-  ADD CONSTRAINT `paciente-cita` FOREIGN KEY (`id_usuario`) REFERENCES `login` (`id_usuario`);
+  ADD CONSTRAINT `paciente-cita` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`);
 
 --
 -- Filtros para la tabla `doctor`
