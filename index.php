@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </button>
           </div>
           <div class="form-group">
-            <a href="registrarse.php"><i class="fas fa-sign-in-alt"></i> Registrarse
+            <a href="registro.php"><i class="fas fa-sign-in-alt"></i> Registrarse
             </a>
           </div>
         </form>
