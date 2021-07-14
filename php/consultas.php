@@ -67,3 +67,17 @@ function consultarDoctor($link, $id)
         header("Location: ../index.php");
     }
 }
+
+function MostrarConsultas($link)
+{
+    $query = "SELECT * FROM `consultas` ";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
+
+function MostrarDentistas($link)
+{
+    $query = "SELECT * FROM `doctor` ";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
