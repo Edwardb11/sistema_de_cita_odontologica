@@ -1,7 +1,8 @@
 <?php
 include_once('./php/conexionDB.php');
 include_once('./php/consultas.php');
-
+$resultado = MostrarConsultas($link); //mostrar las consultas
+$resultadoDentistas = MostrarDentistas($link); //mostrar dentistas
 
 if (isset($_SESSION['id_paciente'])) {
      $vUsuario = $_SESSION['id_paciente'];
@@ -271,7 +272,7 @@ if (isset($_SESSION['id_paciente'])) {
 
                     <div class="col-md-6 col-sm-6">
                          <!-- CONTACT FORM HERE -->
-                         <form id="appointment-form" role="form" method="post" action="#" enctype="multipart/form-data">
+                         <form action="./crud/cita_INSERT.php?opciones=INS" method="POST" enctype="multipart/form-data" autocomplete="off" id="appointment-form">
 
                               <!-- SECTION TITLE -->
                               <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
@@ -281,63 +282,65 @@ if (isset($_SESSION['id_paciente'])) {
                               <div class="wow fadeInUp" data-wow-delay="0.8s">
                                    <div class="col-md-6 col-sm-6">
                                         <label for="name">Nombre</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre " required>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre " require value=" <?php echo $row['nombre']; ?>">
                                    </div>
                                    <div class="col-md-6 col-sm-6">
                                         <label for="name">Apellido</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Apellido" required>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Apellido" require value=" <?php echo $row['apellido']; ?>">
                                    </div>
 
 
                                    <div class="col-md-6 col-sm-6">
                                         <label for="email">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" required>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" require value=" <?php echo $row['correo_electronico']; ?>">
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
-                                        <label for="date">Fecha de nacimiento</label>
-                                        <input type="date" name="time" value="" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required>
+                                        <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                        <input type="date" value="" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required>
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
-                                        <label for="date">Fecha de la cita</label>
-                                        <input type="date" name="date" value="" class="form-control" name="fecha_cita" id="fecha_cita" required>
+                                        <label for="fecha_cita">Fecha de la cita</label>
+                                        <input type="date" class="form-control" name="fecha_cita" id="fecha_cita" required>
+                                   </div>
+                                   <div class="col-md-6 col-sm-6">
+                                        <label for="hora">Hora de la cita</label>
+                                        <input type="time" value="" class="form-control" name="hora" id="hora" required>
+
+                                   </div>
+                                   <div class="col-md-6 col-sm-6">
+                                        <label for="consultas">Consultas</label> <br>
+                                        <select name="consultas" id="consultas" require>
+                                             <?php while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                                                  echo "<option value = " . $row['id_consultas'] . ">" . $row['tipo'] . "</option>";
+                                             }   ?>
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
-                                        <label for="date">Hora de la cita</label>
-                                        <input type="time" name="date" value="" class="form-control" name="hora" id="hora" required>
+                                        <input type="hidden">
+                                        <!--para resolver un problema con estilo en el formulario -->
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
-                                        <label for="select">Consulta</label>
-                                        <select class="form-control">
-                                             <option>Revisión general</option>
-                                             <option>Limpieza bucal</option>
-                                             <option>Empastes</option>
-                                             <option>Endodoncia</option>
-                                             <option>Ortodoncia</option>
-                                             <option>Prótesis</option>
-                                             <option>Implantes</option>
-                                             <option>Cirugías bucales</option>
-                                             <option>Cosmética dental </option>
-                                        </select>
+                                        <label for="dentistas">Dentistas</label> <br>
+                                        <select name="dentistas" id="dentistas" require>
+                                             <?php while ($row = mysqli_fetch_array($resultadoDentistas, MYSQLI_ASSOC)) {
+                                                  echo "<option value = " . $row['id_doctor'] . ">" . $row['nombre'] . "</option>";
+                                             }   ?>
                                    </div>
                                    <div class="col-md-6 col-sm-6">
-                                        <label for="select">Dentista</label>
-                                        <select class="form-control">
-                                             <option> Francisco Rosario</option>
-                                             <option> Arlenis Hernández</option>
-                                             <option> Stewart Diaz</option>
-
-                                        </select>
+                                        <input type="hidden">
+                                        <!--para resolver un problema con estilo en el formulario -->
                                    </div>
+                                   <br>
 
                                    <div class="col-md-12 col-sm-12">
-                                        <label for="telephone">Teléfono</label>
+                                        <br> <label for="phone">Teléfono</label>
                                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="Teléfono" required>
-
-                                        <button type="submit" class="form-control" id="cf-submit" name="submit">Enviar</button>
+                                   </div>
+                                   <div class="col-md-12 col-sm-12">
+                                        <br> <button type="submit" name="enviar" value="enviar" class="form-control" id="cf-submit">Enviar</button>
                                    </div>
                               </div>
                          </form>
