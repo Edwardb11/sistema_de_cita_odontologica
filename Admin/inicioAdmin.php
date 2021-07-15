@@ -1,6 +1,9 @@
 <?php
 include_once('../php/conexionDB.php');
 include_once('../php/consultas.php');
+$resultadoCitas = MostrarCitas($link); // mostrar citas
+
+
 
 
 if (isset($_SESSION['id_doctor'])) {
@@ -30,6 +33,10 @@ if (isset($_SESSION['id_doctor'])) {
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../src/css/lib/fontawesome/css/all.css">
+
+  <!-- Datatable libreria -->
+  <link rel="stylesheet" href="../src/js/lib/datatable\css\jquery.dataTables.min.css">
+  <link rel="stylesheet" href="../src/js/lib/datatable\css\responsive.dataTables.min.css">
 
   <title>Perfect Teeth </title>
 </head>
@@ -93,31 +100,46 @@ if (isset($_SESSION['id_doctor'])) {
                     <div class="col-md-12 text-info">
                       <div class="p-3 mb-2 bg-primary text-white text-center">Citas pendientes</div>
                       <!-- Tablas -->
-                      <table class="table table-responsive table-striped">
+                      <table id="example" class=" table table-striped nowrap responsive " style="width:100%">
                         <thead>
                           <tr>
                             <th>Nombre</th>
                             <th>Apellido</th>
-                            <th>Edad</th>
+                            <th>Fecha de nacimiento</th>
                             <th>Consulta</th>
                             <th>Fecha de la Cita</th>
                             <th>Hora de la Cita</th>
                             <th>Dentista</th>
-                            <th>Comentario </th>
+                            <th>Estado</th>
+                            <th>Diagnóstico </th>
+                            <th> </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Edward</td>
-                            <td>Brito</td>
-                            <td>19</td>
-                            <td>Empastes</td>
-                            <td>11/08/2021</td>
-                            <td>10:00Am</td>
-                            <td>Francisco Rosario</td>
-                            <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar" name="editar" href="Hacer-Tarea-Student.php?accion=UDT&id=<?php echo $row1['idtarea'] ?>">
-                                <i class="fas fa-edit"></i> </a> </td>
-                          </tr>
+                          <?php
+                          //este while va a recorrer en array me va a devolver posicion por posicion lo que 
+                          //esta en la variable resultado y de la forma que lo vas hacer es mysqli
+                          //es decir crear un arreglo de la forma asociativa cada posicion me lo va a retornar como una columna
+                          while ($row = mysqli_fetch_array($resultadoCitas, MYSQLI_ASSOC)) { ?>
+                            <tr>
+                              <td> <?php echo $row['nombre'] ?> </td>
+                              <td> <?php echo $row['apellido'] ?> </td>
+                              <td> <?php echo $row['fecha_nacimiento'] ?> </td>
+                              <td> <?php echo $row['tipo'] ?> </td>
+                              <td> <?php echo $row['fecha_cita'] ?> </td>
+                              <td> <?php echo $row['hora_cita'] ?> </td>
+                              <td> <?php echo $row['nombreD'] ?> </td>
+                              <td> <?php if ($row['estado'] == 'A') {
+                                      echo "Realizada";
+                                    } else {
+                                      echo "No realizada";
+                                    } ?> </td>
+                              <td> <?php echo $row[''] ?> </td>
+                              <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar" name="editar" href="./realizar_consulta.php?accion=UDT&id=<?php echo $row['idtarea'] ?>"> <i class="fas fa-edit"></i> </a> </td>
+                            </tr>
+                          <?php
+                          }
+                          ?>
                         </tbody>
                       </table>
 
@@ -137,6 +159,12 @@ if (isset($_SESSION['id_doctor'])) {
 
   <!-- <script src="../src/css/lib/bootstrap/js/bootstrap.min.js"></script> -->
   <script src="../src/js/admin.js"></script>
+
+  <!-- Script para datatable -->
+  <script type="text/javascript" src="../src/js/lib/datatable\js\jquery-3.5.1.js"> </script>
+  <script type="text/javascript" src="../src/js/lib/datatable\js\jquery.dataTables.min.js"> </script>
+  <script type="text/javascript" src="../src/js/lib/datatable\js\dataTables.responsive.min.js"> </script>
+  <script type="text/javascript" src="../src/js/lib/datatable\datatable.js"></script>
 </body>
 
 </html>
