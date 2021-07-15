@@ -81,3 +81,55 @@ function MostrarDentistas($link)
     $resultado = mysqli_query($link, $query);
     return $resultado;
 }
+function MostrarPacientes($link)
+{
+    $query = "SELECT * FROM `pacientes` ";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
+function MostrarCitas1($link)
+{
+    $query = "SELECT  FROM `citas`, `pacientes`  ";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
+function MostrarCitas($link, $id)
+{
+    $query = "SELECT  
+                    c.id_cita,
+	                p.nombre,
+	                p.apellido,
+	                d.nombreD,
+	                c.fecha_nacimiento,
+	                c.fecha_cita,
+	                c.hora_cita,
+                    con.tipo, 
+                    c.estado
+            FROM 
+                    `citas`   as c 
+            LEFT JOIN `pacientes` as p ON  p.id_paciente  =  c.id_paciente
+            LEFT JOIN `doctor` as d ON  d.id_doctor  =  c.id_doctor
+            LEFT JOIN `consultas` as con ON  con.id_consultas  =  c.id_consultas
+            WHERE d.id_doctor = $id
+          ;
+            ;";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
+
+
+function ConsultarCitas($link, $id)
+{
+    $query = "SELECT * FROM `citas` WHERE `id_cita` =  '$id'";
+    $resultado = mysqli_query($link, $query);
+
+    if (mysqli_num_rows($resultado) == 1) {
+        # code...
+        $row = mysqli_fetch_array($resultado);
+        return $row;
+    } else {
+        # code...
+        $_SESSION['MensajeTexto'] = "Error consultando datos";
+        $_SESSION['MensajeTipo'] = "is-danger";
+    }
+}
