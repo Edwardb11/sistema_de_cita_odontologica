@@ -53,7 +53,7 @@ if (isset($_SESSION['id_doctor'])) {
         <div class="side-inner">
             <div class="profile">
                 <img src="../src/img/admin_user.png" alt="Image" class="img-fluid">
-                <h3 class="name"><?php echo utf8_decode($row['nombre'] . ' ' . $row['apellido']); ?></h3>
+                <h3 class="name"><?php echo utf8_decode($row['nombreD'] . ' ' . $row['apellido']); ?></h3>
                 <span class="country">Perfect Teeth </span>
             </div>
             <div class="nav-menu">

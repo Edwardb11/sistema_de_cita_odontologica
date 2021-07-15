@@ -3,9 +3,6 @@ include_once('../php/conexionDB.php');
 include_once('../php/consultas.php');
 $resultadoCitas = MostrarCitas($link); // mostrar citas
 
-
-
-
 if (isset($_SESSION['id_doctor'])) {
   $vUsuario = $_SESSION['id_doctor'];
   $row = consultarDoctor($link, $vUsuario);
@@ -54,7 +51,7 @@ if (isset($_SESSION['id_doctor'])) {
 
       <div class="profile">
         <img src="../src/img/admin_user.png" alt="Image" class="img-fluid">
-        <h3 class="name"><?php echo utf8_decode($row['nombre'] . ' ' . $row['apellido']); ?></h3>
+        <h3 class="name"><?php echo utf8_decode($row['nombreD'] . ' ' . $row['apellido']); ?></h3>
         <span class="country">Perfect Teeth </span>
       </div>
 
@@ -132,10 +129,10 @@ if (isset($_SESSION['id_doctor'])) {
                               <td> <?php if ($row['estado'] == 'A') {
                                       echo "Realizada";
                                     } else {
-                                      echo "No realizada";
+                                      echo "Pendiente";
                                     } ?> </td>
                               <td> <?php echo $row[''] ?> </td>
-                              <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar" name="editar" href="./realizar_consulta.php?accion=UDT&id=<?php echo $row['idtarea'] ?>"> <i class="fas fa-edit"></i> </a> </td>
+                              <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar" name="editar" href="./realizar_consulta.php?accion=UDT&id=<?php echo $row['id_cita'] ?>"> <i class="fas fa-edit"></i> </a> </td>
                             </tr>
                           <?php
                           }
