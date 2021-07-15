@@ -27,7 +27,7 @@ try {
                 $id_consultas = $_POST['consultas'];
 
                 $query = " 
-                INSERT INTO `citas`(`id_paciente`, `id_doctor`, `fecha_nacimiento`, `fecha_cita`, `hora_cita`, `id_consultas`) VALUES ('$id_paciente', '$id_doctor11',  '$fecha_nacimiento','$fecha_cita', '$hora','$id_consultas')";
+                INSERT INTO `citas`(`id_paciente`, `id_doctor`, `fecha_nacimiento`, `fecha_cita`, `hora_cita`, `id_consultas`,`estado`) VALUES ('$id_paciente', '$id_doctor11',  '$fecha_nacimiento','$fecha_cita', '$hora','$id_consultas','I')";
             }
             $resultado = mysqli_query($link, $query); //Si devuelve True se ejecuto con exito y si no pues no
             if (!$resultado) {
