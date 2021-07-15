@@ -4,7 +4,8 @@ if (!empty($_GET['id'])) {
     include_once('../php/consultas.php');
     $id = $_GET['id'];
     $row = ConsultarCitas($link, $id); //resultado es igual a lo que me devuelva esa funcion
-    $resultado = MostrarCitas($link);
+    $vUsuario = $_SESSION['id_doctor'];
+    $row = consultarDoctor($link, $vUsuario);
 } else {
 }
 ?>
@@ -36,8 +37,6 @@ if (!empty($_GET['id'])) {
 </head>
 
 <body>
-
-
     <aside class="sidebar">
         <div class="toggle">
             <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
@@ -48,11 +47,9 @@ if (!empty($_GET['id'])) {
 
             <div class="profile">
                 <img src="../src/img/admin_user.png" alt="Image" class="img-fluid">
-                <h3 class="name"><?php $row['nombre'] . ' ' . $row['apellido']; ?></h3>
+                <h3 class="name"><?php echo utf8_decode($row['nombreD'] . ' ' . $row['apellido']); ?></h3>
                 <span class="country">Perfect Teeth </span>
             </div>
-
-
             <div class="nav-menu">
                 <ul>
                     <li class="accordion">
@@ -91,7 +88,7 @@ if (!empty($_GET['id'])) {
                                 <div class="row">
 
                                     <div class="container">
-                                        <div class="p-3 mb-2 bg-primary text-white text-center">Realizar diagnóstico sobre la cita</div>
+                                        <div class="p-3 mb-2 bg-info text-white text-center">Realizar diagnóstico sobre la cita</div>
 
                                         <form action="../crud/realizar_consultasUPDATE.php?accion=UDT" method="POST" enctype="multipart/form-data" autocomplete="off" class="form-horizontal">
 
@@ -102,29 +99,25 @@ if (!empty($_GET['id'])) {
 
                                                 <div class="card-body">
                                                     <h5 class="card-title">Diagnóstico </h5>
-                                                    <p class="card-text"></p>
+                                                    <p class="card-text">Con el fin de identificar dicha enfermedad o afección mediante una buena interpretación de los resultados obtenidos. En ocasiones asisten pacientes a la consulta dental que solo desean resolver un problema que les aqueja en ese momento.</p>
 
                                                 </div>
                                             </div>
                                             <div class=" form-group">
-                                                <div class="row">
+                                                <div class="row" style="margin-top: 5%;">
                                                     <!-- primera columna -->
                                                     <div class=" col-md-4">
-                                                        <label for="apellidos">Descripción </label>
+                                                        <label for="apellidos"> Descripción </label>
                                                         <input class="form-control" type="text" name="Descripción" placeholder="Descripción" required>
                                                     </div>
-
                                                     <!-- segunda columna -->
                                                     <div class=" col-md-4">
                                                         <label for="apellidos">Medicina </label>
                                                         <input class="form-control" type="text" name="Medicina" placeholder="Medicina opcional" required>
                                                     </div>
-
-
-
                                                 </div>
 
-                                                <div class="ol-md-4" style="margin-top: 10%;">
+                                                <div class="ol-md-4" style="margin-top: 5%;">
                                                     <button class="btn btn-success btn-lg " type="submit" name="guardar" value="Guardar">
                                                         <i class="far fa-save"></i> Guardar
                                                     </button>

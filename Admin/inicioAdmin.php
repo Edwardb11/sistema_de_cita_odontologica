@@ -1,7 +1,8 @@
 <?php
 include_once('../php/conexionDB.php');
 include_once('../php/consultas.php');
-$resultadoCitas = MostrarCitas($link); // mostrar citas
+$id = $_SESSION['id_doctor'];
+$resultadoCitas = MostrarCitas($link, $id); // mostrar citas
 
 if (isset($_SESSION['id_doctor'])) {
   $vUsuario = $_SESSION['id_doctor'];
