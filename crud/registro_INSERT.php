@@ -31,12 +31,42 @@ try {
             if (!$resultado) {
                 $_SESSION['MensajeTexto'] = "Error insertando el contenido";
                 $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
-                // header("Location: ./index.php");
+                header("Location: ./index.php");
                 // die("Error en base de datos: " . mysqli_error($link));
             } else {
                 $_SESSION['MensajeTexto'] = "Registro almacenado con exito, por favor inicie session";
                 $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-info text-white";
                 header("Location: ../index.php");
+            }
+            //cerrando conexion
+            mysqli_close($link);
+            break;
+
+        case 'INSDOCT':
+            if (isset($_POST['guardar'])) {
+                $nombre = filter_var($_POST['name'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $apellido = filter_var($_POST['apellido'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $sexo = filter_var($_POST['sexo'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $fecha = filter_var($_POST['nacimiento'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $correo = filter_var($_POST['correo'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $telefono = filter_var($_POST['cell'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $clave = filter_var($_POST['clave'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                $especialidad = filter_var($_POST['especialidad'], FILTER_SANITIZE_STRING);  //para filtrar la data
+                //$hash_passcode = password_hash($clave, PASSWORD_DEFAULT);
+                $query = " 
+                    INSERT INTO `doctor`(`nombreD`, `apellido`, `sexo`, `fecha_nacimiento` ,`telefono`, `correo_eletronico`, `clave`,`id_especialidad`) VALUES ('$nombre', '$apellido','$sexo', '$fecha', '$telefono','$correo', '$clave', '$especialidad')";
+            }
+
+            $resultado = mysqli_query($link, $query); //Si devuelve True se ejecuto con exito y si no pues no
+            if (!$resultado) {
+                $_SESSION['MensajeTexto'] = "Error insertando el contenido";
+                $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
+                header("Location: ../admin/doctores.php");
+                // die("Error en base de datos: " . mysqli_error($link));
+            } else {
+                $_SESSION['MensajeTexto'] = "Registro almacenado con exito.";
+                $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-info text-white";
+                header("Location: ../admin/doctores.php");
             }
             //cerrando conexion
             mysqli_close($link);

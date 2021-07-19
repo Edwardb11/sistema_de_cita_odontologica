@@ -74,6 +74,12 @@ function MostrarConsultas($link)
     $resultado = mysqli_query($link, $query);
     return $resultado;
 }
+function MostrarEspecialidad($link)
+{
+    $query = "SELECT * FROM `especialidad` ";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
 
 function MostrarDentistas($link)
 {
