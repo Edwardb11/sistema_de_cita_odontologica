@@ -315,25 +315,17 @@ if (isset($_SESSION['id_paciente'])) {
                                              <?php while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
                                                   echo "<option value = " . $row['id_consultas'] . ">" . $row['tipo'] . "</option>";
                                              }   ?>
-                                   </div>
-
-                                   <div class="col-md-6 col-sm-6">
-                                        <input type="hidden">
-                                        <!--para resolver un problema con estilo en el formulario -->
+                                        </select>
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
                                         <label for="dentistas">Dentistas</label> <br>
                                         <select name="dentistas" id="dentistas" require>
                                              <?php while ($row = mysqli_fetch_array($resultadoDentistas, MYSQLI_ASSOC)) {
-                                                  echo "<option value = " . $row['id_doctor'] . ">" . $row['nombre'] . "</option>";
+                                                  echo "<option value = " . $row['id_doctor'] . ">" . $row['nombreD'] . "</option>";
                                              }   ?>
+                                        </select>
                                    </div>
-                                   <div class="col-md-6 col-sm-6">
-                                        <input type="hidden">
-                                        <!--para resolver un problema con estilo en el formulario -->
-                                   </div>
-                                   <br>
 
                                    <div class="col-md-12 col-sm-12">
                                         <br> <label for="phone">Teléfono</label>

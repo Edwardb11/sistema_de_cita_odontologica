@@ -1,7 +1,7 @@
 <?php
 include_once('../php/conexionDB.php');
 include_once('../php/consultas.php');
-
+$resultado = MostrarEspecialidad($link); //mostrar las consultas
 
 if (isset($_SESSION['id_doctor'])) {
     $vUsuario = $_SESSION['id_doctor'];
@@ -99,8 +99,8 @@ if (isset($_SESSION['id_doctor'])) {
                             <div class="panel-body">
                                 <div class="row">
 
-                                    <div class="container">
-                                        <form action=".php" method="POST" enctype="multipart/form-data">
+                                    <div class="container ">
+                                        <form action="../crud/registro_INSERT.php?opciones=INSDOCT" method="POST" enctype="multipart/form-data" autocomplete="off">
                                             <div class="p-3 mb-2 bg-info text-white text-center">Agregar un nuevo
                                                 odontólogo</div>
                                             <!-- primera fila -->
@@ -109,17 +109,17 @@ if (isset($_SESSION['id_doctor'])) {
                                                     <!-- primera columna -->
                                                     <div class="col-md-4">
                                                         <label for="nombres">Nombres</label>
-                                                        <input class="form-control" type="text" name="nombres" placeholder="Nombres">
+                                                        <input class="form-control" type="text" name="name" placeholder="Nombres" required>
                                                     </div>
                                                     <!-- segunda columna -->
                                                     <div class="col-md-4">
                                                         <label for="apellidos">Apellidos </label>
-                                                        <input class="form-control" type="text" name="apellidos" placeholder="Apellidos">
+                                                        <input class="form-control" type="text" name="apellido" placeholder="Apellidos" required>
                                                     </div>
                                                     <!-- tercera columna -->
                                                     <div class="col-md-4">
                                                         <label for="nacimiento">Fecha de nacimiento</label>
-                                                        <input class="form-control" type="date" name="nacimiento" placeholder="Fecha de nacimiento">
+                                                        <input class="form-control" type="date" name="nacimiento" placeholder="Fecha de nacimiento" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,19 +129,23 @@ if (isset($_SESSION['id_doctor'])) {
                                                 <!-- primera comumna -->
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <label for="correo">Correo electrónico</label>
-                                                        <input class="form-control" type="text" name="correo" placeholder="Correo Electrónico">
+                                                        <label for="clave">Teléfono </label>
+                                                        <input class="form-control" type="text" name="cell" placeholder="Teléfono">
                                                     </div>
 
                                                     <!-- segunda columna -->
+
+                                                    <div class="col-md-4">
+                                                        <label for="correo">Correo electrónico</label>
+                                                        <input class="form-control" type="text" name="correo" placeholder="Correo Electrónico" required>
+                                                    </div>
+
+
                                                     <div class="col-md-4">
                                                         <label for="clave">Contraseña</label>
-                                                        <input class="form-control" type="text" name="clave" placeholder="Contraseña">
+                                                        <input class="form-control" type="text" name="clave" placeholder="Contraseña" required>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label for="clave">Confirmar contraseña</label>
-                                                        <input class="form-control" type="text" name="clave" placeholder="Contraseña">
-                                                    </div>
+
                                                 </div>
                                             </div>
                                             <!-- tercera fila -->
@@ -150,7 +154,7 @@ if (isset($_SESSION['id_doctor'])) {
                                                     <!-- primera columna -->
                                                     <div class="col-md-4">
                                                         <label for="sexo">Sexo</label>
-                                                        <select class="form-control" name="sexo">
+                                                        <select class="form-control" name="sexo" required>
                                                             <option>Masculino</option>
                                                             <option>Femenino</option>
 
@@ -158,23 +162,19 @@ if (isset($_SESSION['id_doctor'])) {
                                                     </div>
                                                     <!-- segunda columna -->
                                                     <div class="col-md-4">
-                                                        <label for="especialidad">Especialidad </label>
-                                                        <select class="form-control" name="especialidad">
-                                                            <option>Odontólogo general</option>
-                                                            <option>Odontopediatra</option>
-                                                            <option>Ortodoncista</option>
-                                                            <option>Patólogo oral</option>
-                                                            <option>Endodoncista</option>
+                                                        <label for="especialidad">Especialidad </label> <br>
+                                                        <select name="especialidad" id="especialidad" required>
+                                                            <?php while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                                                                echo "<option value = " . $row['id_especialidad'] . ">" . $row['tipo'] . "</option>";
+                                                            }   ?>
                                                         </select>
                                                     </div>
-                                                    <!-- tercera columna -->
-                                                    <div class="col-md-4">
-                                                        <label for="telefono">Teléfono</label>
-                                                        <input class="form-control" type="text" name="telefono" placeholder="Teléfono">
-                                                    </div>
+
                                                 </div>
 
-                                                <br> <button class="btn btn-primary " type="button">Guardar</button>
+                                                <br> <button class="btn btn-success btn-lg " type="submit" name="guardar" value="Guardar">
+                                                    <i class="far fa-save"></i> Guardar
+                                                </button>
                                         </form>
                                     </div>
 
