@@ -290,16 +290,12 @@ if (isset($_SESSION['id_paciente'])) {
                                    </div>
 
 
-                                   <div class="col-md-6 col-sm-6">
+                                   <div class="col-md-12 col-sm-6">
                                         <label for="email">Correo Electrónico</label>
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" require value=" <?php echo $row['correo_electronico']; ?>">
                                    </div>
 
-                                   <div class="col-md-6 col-sm-6">
-                                        <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                        <input type="date" value="" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required>
-                                   </div>
-
+                                   </script>
                                    <div class="col-md-6 col-sm-6">
                                         <label for="fecha_cita">Fecha de la cita</label>
                                         <input type="date" class="form-control" name="fecha_cita" id="fecha_cita" required>
@@ -312,8 +308,8 @@ if (isset($_SESSION['id_paciente'])) {
                                    <div class="col-md-6 col-sm-6">
                                         <label for="consultas">Consultas</label> <br>
                                         <select name="consultas" id="consultas" require>
-                                             <?php while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-                                                  echo "<option value = " . $row['id_consultas'] . ">" . $row['tipo'] . "</option>";
+                                             <?php while ($row1 = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                                                  echo "<option value = " . $row1['id_consultas'] . ">" . $row1['tipo'] . "</option>";
                                              }   ?>
                                         </select>
                                    </div>
@@ -321,15 +317,15 @@ if (isset($_SESSION['id_paciente'])) {
                                    <div class="col-md-6 col-sm-6">
                                         <label for="dentistas">Dentistas</label> <br>
                                         <select name="dentistas" id="dentistas" require>
-                                             <?php while ($row = mysqli_fetch_array($resultadoDentistas, MYSQLI_ASSOC)) {
-                                                  echo "<option value = " . $row['id_doctor'] . ">" . $row['nombreD'] . "</option>";
+                                             <?php while ($row2 = mysqli_fetch_array($resultadoDentistas, MYSQLI_ASSOC)) {
+                                                  echo "<option value = " . $row2['id_doctor'] . ">" . $row2['nombreD'] . "</option>";
                                              }   ?>
                                         </select>
                                    </div>
 
                                    <div class="col-md-12 col-sm-12">
                                         <br> <label for="phone">Teléfono</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Teléfono" required>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Teléfono" required value=" <?php echo $row['telefono']; ?>">
                                    </div>
                                    <div class="col-md-12 col-sm-12">
                                         <br> <button type="submit" name="enviar" value="enviar" class="form-control" id="cf-submit">Enviar</button>
@@ -353,9 +349,9 @@ if (isset($_SESSION['id_paciente'])) {
                                         <div class="d-flex flex-column align-items-center text-center">
                                              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                              <div class="mt-3">
-                                                  <h4>Nombre completo</h4>
+                                                  <h3 class="name"><?php echo $row['nombre'] . ' ' . $row['apellido']; ?> </h3>
                                                   <p class="text-secondary mb-1">Perfect Teeth</p>
-                                                  <p class="text-muted font-size-sm">Correo electrónico</p>
+                                                  <p class="text-muted font-size-sm"><?php echo $row['correo_electronico']; ?></p>
 
                                              </div>
                                         </div>
@@ -371,7 +367,7 @@ if (isset($_SESSION['id_paciente'])) {
                                                   <h5 class="mb-0"> Nombre </h5>
                                              </div>
                                              <div class="col-sm-9 text-secondary">
-                                                  Texto aqui
+                                                  <?php echo $row['nombre'] ?>
                                              </div>
                                         </div>
                                         <hr>
@@ -380,7 +376,16 @@ if (isset($_SESSION['id_paciente'])) {
                                                   <h5 class="mb-0"> Apellido</h5>
                                              </div>
                                              <div class="col-sm-9 text-secondary">
-                                                  Texto aqui
+                                                  <?php echo $row['apellido']; ?>
+                                             </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                             <div class="col-sm-3">
+                                                  <h5 class="mb-0"> Sexo</h5>
+                                             </div>
+                                             <div class="col-sm-9 text-secondary">
+                                                  <?php echo $row['sexo']; ?>
                                              </div>
                                         </div>
                                         <hr>
@@ -389,7 +394,7 @@ if (isset($_SESSION['id_paciente'])) {
                                                   <h5 class="mb-0">Correo electrónico</h5>
                                              </div>
                                              <div class="col-sm-9 text-secondary">
-                                                  Texto aqui
+                                                  <?php echo $row['correo_electronico']; ?>
                                              </div>
                                         </div>
                                         <hr>
@@ -398,16 +403,16 @@ if (isset($_SESSION['id_paciente'])) {
                                                   <h5 class="mb-0">Télefono</h5>
                                              </div>
                                              <div class="col-sm-9 text-secondary">
-                                                  Texto aqui
+                                                  <?php echo $row['telefono']; ?>
                                              </div>
                                         </div>
                                         <hr>
                                         <div class="row">
                                              <div class="col-sm-3">
-                                                  <h5 class="mb-0">Edad</h5>
+                                                  <h5 class="mb-0">Fecha de nacimiento</h5>
                                              </div>
                                              <div class="col-sm-9 text-secondary">
-                                                  19
+                                                  <?php echo $row['fecha_nacimiento']; ?>
                                              </div>
                                         </div>
                                         <hr>
@@ -415,7 +420,8 @@ if (isset($_SESSION['id_paciente'])) {
                                         <hr>
                                         <div class="row">
                                              <div class="col-sm-12">
-                                                  <a class="btn btn-info " target="__blank" href="#">Editar</a>
+                                                  <a class="btn btn-success " target="__blank" href="#">Editar perfil</a>
+                                                  <a class="btn btn-info " target="__blank" href="#">Vizualizar historial</a>
                                              </div>
                                         </div>
                                    </div>
@@ -423,64 +429,7 @@ if (isset($_SESSION['id_paciente'])) {
                               </div>
                               <br>
 
-                              <div class="row">
-                                   <div class="col-sm-6 mb-3">
-                                        <div class="card h-100">
-                                             <div class="card-body">
-                                                  <h4 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Historial
-                                                       </i>Medico
-                                                  </h4>
-                                                  <table class="table table-responsive table-striped">
-                                                       <thead>
-                                                            <tr>
-                                                                 <th>Historial </th>
-                                                                 <th>Fecha</th>
-                                                                 <th>Hora</th>
-                                                                 <th>Doctor</th>
-                                                                 <th>Comentario </th>
-                                                            </tr>
-                                                       </thead>
-                                                       <tbody>
-                                                            <tr>
-                                                                 <td>Liempieza bocal</td>
-                                                                 <td>11/09/2021</td>
-                                                                 <td>10:00AM</td>
-                                                                 <td>Francisco Rosario</td>
-                                                                 <td>Listerin 3 veces al dia </td>
 
-                                                            </tr>
-                                                       </tbody>
-                                                  </table>
-
-                                             </div>
-                                             <div class="card-body">
-                                                  <h4 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Citas
-                                                       </i>Pedientes
-                                                  </h4>
-                                                  <table class="table table-responsive table-striped">
-                                                       <thead>
-                                                            <tr>
-                                                                 <th>Citas pendientes </th>
-                                                                 <th>Fecha</th>
-                                                                 <th>Hora</th>
-                                                                 <th>Doctor</th>
-                                                                 <th>Comentario </th>
-                                                            </tr>
-                                                       </thead>
-                                                       <tbody>
-                                                            <tr>
-                                                                 <td>Endodoncia</td>
-                                                                 <td>11/09/2021</td>
-                                                                 <td>10:00AM</td>
-                                                                 <td>Francisco Rosario</td>
-
-                                                            </tr>
-                                                       </tbody>
-                                                  </table>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
 
                          </div>
                     </div>

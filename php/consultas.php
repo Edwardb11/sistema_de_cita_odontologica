@@ -63,7 +63,7 @@ function consultarDoctor($link, $id)
         return $row;
     } else {
         $_SESSION['MensajeTexto'] = "Error validando datos de usuario";
-        $_SESSION['MensajeTipo'] = "is-danger";
+        $_SESSION['MensajeTipo'] =  "p-3 mb-2 bg-danger text-white";
         header("Location: ../index.php");
     }
 }
@@ -140,6 +140,6 @@ function ConsultarCitas($link, $id)
     } else {
         # code...
         $_SESSION['MensajeTexto'] = "Error consultando datos";
-        $_SESSION['MensajeTipo'] = "is-danger";
+        $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
     }
 }

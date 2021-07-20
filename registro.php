@@ -69,7 +69,7 @@ include_once('php/consultas.php');
           </div>
           <div class="form-group">
             <label for="username" class="font-weight-bold">Correo Electrónico</label>
-            <input type="email" class="form-control" name="correo_electronico" placeholder="Correo electrónico" required>
+            <input type="email" class="form-control" name="correo" placeholder="Correo electrónico" required>
           </div>
           <div class="form-group">
             <label for="password" class="font-weight-bold">Contraseña </label>
