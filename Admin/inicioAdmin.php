@@ -101,13 +101,13 @@ if (isset($_SESSION['id_doctor'])) {
                       <table id="example" class=" table table-striped nowrap responsive " style="width:100%">
                         <thead>
                           <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Fecha de nacimiento</th>
+                            <th>Nombre completo</th>
+
+                            <th>Edad</th>
                             <th>Consulta</th>
                             <th>Fecha de la Cita</th>
                             <th>Hora de la Cita</th>
-                            <th>Dentista</th>
+                            <!-- <th>Dentista</th> -->
                             <th>Estado</th>
                             <th>Diagnóstico </th>
                             <th> </th>
@@ -115,24 +115,27 @@ if (isset($_SESSION['id_doctor'])) {
                         </thead>
                         <tbody>
                           <?php
+
+
+
+
                           //este while va a recorrer en array me va a devolver posicion por posicion lo que 
                           //esta en la variable resultado y de la forma que lo vas hacer es mysqli
                           //es decir crear un arreglo de la forma asociativa cada posicion me lo va a retornar como una columna
                           while ($row = mysqli_fetch_array($resultadoCitas, MYSQLI_ASSOC)) { ?>
                             <tr>
-                              <td> <?php echo $row['nombre'] ?> </td>
-                              <td> <?php echo $row['apellido'] ?> </td>
-                              <td> <?php echo $row['fecha_nacimiento'] ?> </td>
+                              <td> <?php echo $row['nombre'] . ' ' . $row['apellido']  ?> </td>
+                              <td> <?php echo  $row['años']; ?> </td>
                               <td> <?php echo $row['tipo'] ?> </td>
                               <td> <?php echo $row['fecha_cita'] ?> </td>
                               <td> <?php echo $row['hora_cita'] ?> </td>
-                              <td> <?php echo $row['nombreD'] ?> </td>
+
                               <td> <?php if ($row['estado'] == 'A') {
                                       echo "Realizada";
                                     } else {
                                       echo "Pendiente";
                                     } ?> </td>
-                              <td> <?php echo $row[''] ?> </td>
+                              <td> <?php echo $row['descripcion'] ?> </td>
                               <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar" name="editar" href="./realizar_consulta.php?accion=UDT&id=<?php echo $row['id_cita'] ?>"> <i class="fas fa-edit"></i> </a> </td>
                             </tr>
                           <?php

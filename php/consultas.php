@@ -106,12 +106,12 @@ function MostrarCitas($link, $id)
 	                p.nombre,
 	                p.apellido,
 	                d.nombreD,
-	                c.fecha_nacimiento,
+	                p.fecha_nacimiento,
 	                c.fecha_cita,
 	                c.hora_cita,
                     con.tipo, 
                     c.estado,
-                 year(curdate()), year(c.fecha_nacimiento) ,year(CURDATE())-year(c.fecha_nacimiento) as años,
+                 year(curdate()), year(p.fecha_nacimiento) ,year(CURDATE())-year(p.fecha_nacimiento) as años,
                  pd.descripcion
 
             FROM 

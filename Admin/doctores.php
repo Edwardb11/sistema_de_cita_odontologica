@@ -29,10 +29,22 @@ if (isset($_SESSION['id_doctor'])) {
 
     <!-- jQuery UI -->
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
+    <!-- <script>
+        function habilitar() {
 
-    <link href="vendors/fullcalendar/fullcalendar.css" rel="stylesheet" media="screen">
-    <link href='../src/js/lib/fullcalendar/main.css' rel='stylesheet' />
-    <script src='../src/js/lib/fullcalendar/main.js'></script>
+            var camp1 = document.getElementById("clave");
+            var camp2 = document.getElementById("clave2");
+            var boton = document.getElementById("Guardar");
+
+            if (camp1.value != camp2.value) {
+                boton.disabled = true;
+            } else {
+                boton.disabled = false;
+            }
+
+        }
+    </script> -->
+
 
     <title>Perfect Teeth </title>
     <style>
@@ -129,23 +141,19 @@ if (isset($_SESSION['id_doctor'])) {
                                                 <!-- primera comumna -->
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <label for="clave">Teléfono </label>
-                                                        <input class="form-control" type="text" name="cell" placeholder="Teléfono">
-                                                    </div>
-
-                                                    <!-- segunda columna -->
-
-                                                    <div class="col-md-4">
                                                         <label for="correo">Correo electrónico</label>
                                                         <input class="form-control" type="text" name="correo" placeholder="Correo Electrónico" required>
                                                     </div>
 
-
+                                                    <!-- segunda columna -->
                                                     <div class="col-md-4">
                                                         <label for="clave">Contraseña</label>
-                                                        <input class="form-control" type="text" name="clave" placeholder="Contraseña" required>
+                                                        <input class="form-control" type="password" name="clave" id="clave" placeholder="Contraseña" required>
                                                     </div>
-
+                                                    <div class="col-md-4">
+                                                        <label for="clave"> Confirmar Contraseña</label>
+                                                        <input class="form-control" type="password" name="clave" id="clave2" placeholder="Contraseña" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- tercera fila -->
@@ -169,10 +177,14 @@ if (isset($_SESSION['id_doctor'])) {
                                                             }   ?>
                                                         </select>
                                                     </div>
+                                                    <div class="col-md-4">
+                                                        <label for="clave">Teléfono </label>
+                                                        <input class="form-control" type="text" name="cell" placeholder="Teléfono">
+                                                    </div>
 
                                                 </div>
 
-                                                <br> <button class="btn btn-success btn-lg " type="submit" name="guardar" value="Guardar">
+                                                <br> <button class="btn btn-success btn-lg " type="submit" name="guardar" id="Guardar" value="Guardar" onkeyup="habilitar()">
                                                     <i class="far fa-save"></i> Guardar
                                                 </button>
                                         </form>

@@ -30,18 +30,42 @@ include_once('php/consultas.php');
           <img src="src/img/logo.png" alt="profile_img" height="100px" width="100px;">
         </div>
         <h3>Registrarse</h3>
-        <form action="./crud/registro_INSERT.php?opciones=INS" method="POST" enctype="multipart/form-data" autocomplete="off">
-          <div class="form-group">
-            <label for="name" class="font-weight-bold">Nombre </label>
-            <input type="text" class="form-control" name="name" placeholder="Nombre" required>
+        <form action="../crud/registro_INSERT.php?opciones=INS" method="POST" enctype="multipart/form-data" autocomplete="off">
+          <div class=" form-group">
+            <div class="row">
+              <!-- primera columna -->
+              <div class="col-md-4">
+                <label for="name" class="font-weight-bold">Nombre </label>
+                <input type="text" class="form-control" name="name" placeholder="Nombre" required>
+              </div>
+              <!-- segunda columna -->
+              <div class="col-md-4">
+                <label for="apellido" class="font-weight-bold">Apellido </label>
+                <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+              </div>
+
+              <div class="col-md-4">
+                <label for="sexo" class="font-weight-bold">Sexo</label>
+                <select class="form-control" name="sexo" required>
+                  <option>Masculino</option>
+                  <option>Femenino</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="apellido" class="font-weight-bold">Apellido </label>
-            <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
-          </div>
-          <div class="form-group">
-            <label for="cell" class="font-weight-bold">Teléfono </label>
-            <input type="text" class="form-control" name="cell" placeholder="Teléfono" required>
+          <div class=" form-group">
+            <div class="row">
+              <!-- primera columna -->
+              <div class="col-md-6">
+                <label for="nacimiento" class="font-weight-bold">Fecha de nacimiento</label>
+                <input class="form-control" type="date" name="nacimiento" placeholder="Fecha de nacimiento" required>
+              </div>
+              <!-- segunda columna -->
+              <div class="col-md-6">
+                <label for="cell" class="font-weight-bold">Teléfono </label>
+                <input type="text" class="form-control" name="cell" placeholder="Teléfono" required>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="username" class="font-weight-bold">Correo Electrónico</label>
@@ -61,6 +85,7 @@ include_once('php/consultas.php');
           </div>
         </form>
       </div>
+
 
       <script>
         document.addEventListener('DOMContentLoaded', () => {
