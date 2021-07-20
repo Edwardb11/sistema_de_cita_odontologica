@@ -28,15 +28,9 @@ if (isset($_SESSION['id_doctor'])) {
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="../src/css/lib/fontawesome/css/all.css">
 
-
-
-	<!-- jQuery UI -->
-	<!-- <link rel="shortcut icon" href="https://www.jose-aguilar.com/blog/wp-content/themes/jaconsulting/favicon.ico" /> -->
-	<!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
-	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" href="css/styles.css"> -->
-	<link rel='stylesheet' type='text/css' href='css/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='../src/css/fullcalendar.css' />
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -93,7 +87,6 @@ if (isset($_SESSION['id_doctor'])) {
 					}
 					?>
 				],
-
 				eventClick: function(calEvent, jsEvent, view) {
 					$('#event-title').text(calEvent.title);
 					$('#event-description').html(calEvent.description);
@@ -103,7 +96,6 @@ if (isset($_SESSION['id_doctor'])) {
 		});
 	</script>
 	<title>Perfect Teeth </title>
-
 </head>
 
 <body>
@@ -140,7 +132,6 @@ if (isset($_SESSION['id_doctor'])) {
 					</ul>
 				</div>
 			</div>
-
 		</aside>
 		<main class="bg bg-white">
 			<div class="site-section ">
@@ -157,9 +148,7 @@ if (isset($_SESSION['id_doctor'])) {
 											Calendario
 										</li>
 									</ol>
-
 								</div>
-
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-12 text-info">
@@ -167,8 +156,6 @@ if (isset($_SESSION['id_doctor'])) {
 											</div>
 											<div class="row">
 												<div id="content" class="col-lg-12">
-													<!-- <div id="calendar"></div> -->
-
 													<div class="row">
 														<div id="content" class="col-lg-12">
 															<div id="calendar"></div>
@@ -193,31 +180,19 @@ if (isset($_SESSION['id_doctor'])) {
 															</div>
 														</div>
 													</div>
-
-
-
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
 
 		</main>
-
-
-
-
-		<!-- <script src="../src/css/lib/bootstrap/js/bootstrap.min.js"></script> -->
 		<script src="../src/js/admin.js"></script>
-
 	</body>
 
 </html>
