@@ -110,12 +110,16 @@ function MostrarCitas($link, $id)
 	                c.fecha_cita,
 	                c.hora_cita,
                     con.tipo, 
-                    c.estado
+                    c.estado,
+                 year(curdate()), year(c.fecha_nacimiento) ,year(CURDATE())-year(c.fecha_nacimiento) as años,
+                 pd.descripcion
+
             FROM 
                     `citas`   as c 
             LEFT JOIN `pacientes` as p ON  p.id_paciente  =  c.id_paciente
             LEFT JOIN `doctor` as d ON  d.id_doctor  =  c.id_doctor
             LEFT JOIN `consultas` as con ON  con.id_consultas  =  c.id_consultas
+            LEFT JOIN `paciente_diagnostico` as pd ON  pd.id_cita  =  c.id_cita
             WHERE d.id_doctor = $id
           ;
             ;";
