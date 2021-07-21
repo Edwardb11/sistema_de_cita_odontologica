@@ -1,12 +1,11 @@
 <?php
 include_once('../php/conexionDB.php');
 include_once('../php/consultas.php');
-$id = $_SESSION['id_doctor'];
-$resultadoCitas = MostrarCitas($link, $id); // mostrar citas
 
 if (isset($_SESSION['id_doctor'])) {
   $vUsuario = $_SESSION['id_doctor'];
   $row = consultarDoctor($link, $vUsuario);
+  $resultadoCitas = MostrarCitas($link, $vUsuario); // mostrar citas
 } else {
   $_SESSION['MensajeTexto'] = "Error acceso al sistema  no registrado.";
   $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
@@ -98,6 +97,18 @@ if (isset($_SESSION['id_doctor'])) {
                     <div class="col-md-12 text-info">
                       <div class="p-3 mb-2 bg-primary text-white text-center">Citas pendientes</div>
                       <!-- Tablas -->
+                      <div class="col-md-4">
+                        <?php if (isset($_SESSION['MensajeTexto'])) { ?>
+                          <div class="alert <?php echo $_SESSION['MensajeTipo'] ?>" role="alert">
+                            <?php echo $_SESSION['MensajeTexto'] ?>
+                            <button class="delete"><i class="fa fa-times"></i></button>
+                          </div>
+
+                        <?php $_SESSION['MensajeTexto'] = null;
+                          $_SESSION['MensajeTipo'] = null;
+                        }
+                        ?>
+                      </div>
                       <table id="example" class=" table table-striped nowrap responsive " style="width:100%">
                         <thead>
                           <tr>
@@ -155,6 +166,18 @@ if (isset($_SESSION['id_doctor'])) {
 
   </main>
 
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      (document.querySelectorAll('.alert .delete') || []).forEach(($delete) => {
+        const $notification = $delete.parentNode;
+
+        $delete.addEventListener('click', () => {
+          $notification.parentNode.removeChild($notification);
+        });
+      });
+    });
+  </script>
 
   <script src="../src/js/jquery.js"></script>
 

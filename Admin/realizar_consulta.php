@@ -5,7 +5,7 @@ if (!empty($_GET['id'])) {
     $id = $_GET['id'];
     $row = ConsultarCitas($link, $id); //resultado es igual a lo que me devuelva esa funcion
     $vUsuario = $_SESSION['id_doctor'];
-    $row = consultarDoctor($link, $vUsuario);
+    $row1 = consultarDoctor($link, $vUsuario);
 } else {
 }
 ?>
@@ -95,14 +95,19 @@ if (!empty($_GET['id'])) {
                                             <input type="hidden" name="id" id="id" value="<?php echo $row['id_cita'] ?>">
                                             <!-- para almacenar los id que el usuario logea -->
 
+
                                             <div class="card">
 
                                                 <div class="card-body">
                                                     <h5 class="card-title">Diagnóstico </h5>
-                                                    <p class="card-text">Con el fin de identificar dicha enfermedad o afección mediante una buena interpretación de los resultados obtenidos. En ocasiones asisten pacientes a la consulta dental que solo desean resolver un problema que les aqueja en ese momento.</p>
+                                                    <p class="card-text">Con el fin de identificar dicha enfermedad o afección mediante una buena interpretación de los resultados obtenidos. En ocasiones asisten pacientes a la consulta dental que solo desean resolver un problema que les aqueja en ese momento.
+
+                                                    </p>
 
                                                 </div>
                                             </div>
+
+
                                             <div class=" form-group">
                                                 <div class="row" style="margin-top: 5%;">
                                                     <!-- primera columna -->
@@ -122,8 +127,10 @@ if (!empty($_GET['id'])) {
                                                         <i class="far fa-save"></i> Guardar
                                                     </button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <a href="./inicioAdmin.php"> <i class="fas fa-history"></i> Atrás </a>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-md-offset-5">
+                                                        <a href="./inicioAdmin.php"> <i class="fas fa-history"></i> Atrás </a>
+                                                    </div>
                                                 </div>
 
                                         </form>
