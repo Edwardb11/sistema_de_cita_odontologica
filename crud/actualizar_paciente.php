@@ -29,7 +29,7 @@ try {
             $query = "UPDATE `pacientes` SET `nombre` = '$nombre', `apellido` = '$apellido', `telefono` = '$telefono',  `sexo` = '$sexo',  `fecha_nacimiento` = '$fecha',  `correo_electronico` = '$correo',  `clave` = '$clave'    WHERE `id_paciente` = '$id'"; //para actualizar
 
 
-            $resultado = mysqli_query($link, $query) && $resultado = mysqli_query($link, $query); //Si devuelve True se ejecuto con exito y si no pues no
+            $resultado = mysqli_query($link, $query);
             if (!$resultado) {
                 $_SESSION['MensajeTexto'] = "Error actualizando el registro ";
                 $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";

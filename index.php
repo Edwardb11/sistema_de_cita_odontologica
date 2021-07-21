@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <div class="card">
 
             <div class="notification <?php echo $_SESSION['MensajeTipo'] ?>">
-              <button class="delete"></button>
+              <button class="delete"><i class="fas fa-times"></i></button>
               <?php echo $_SESSION['MensajeTexto'] ?>
             </div>
           </div>

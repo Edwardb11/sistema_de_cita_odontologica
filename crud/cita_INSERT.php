@@ -43,7 +43,7 @@ try {
         default:
             # code...
             $_SESSION['MensajeTexto'] = "Avertencia: No se pudo identificar la accion a realizar";
-            $_SESSION['MensajeTipo'] = "bg-warning text-dark";
+            $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-warning text-white";
             header("Location: ../principal.php");
             //die("Error en base de datos: ". mysqli_error($link));  //muestra en pantalla el error que se ejecuta
             break;

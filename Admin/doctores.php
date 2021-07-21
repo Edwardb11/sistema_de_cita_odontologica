@@ -110,10 +110,21 @@ if (isset($_SESSION['id_doctor'])) {
                             </div>
                             <div class="panel-body">
                                 <div class="row">
+                                    <div class="col-md-4">
+                                        <?php if (isset($_SESSION['MensajeTexto'])) { ?>
+                                            <div class="alert <?php echo $_SESSION['MensajeTipo'] ?>" role="alert">
+                                                <?php echo $_SESSION['MensajeTexto'] ?>
+                                                <button class="delete"><i class="fa fa-times"></i></button>
+                                            </div>
 
+                                        <?php $_SESSION['MensajeTexto'] = null;
+                                            $_SESSION['MensajeTipo'] = null;
+                                        }
+                                        ?>
+                                    </div>
                                     <div class="container ">
                                         <form action="../crud/registro_INSERT.php?opciones=INSDOCT" method="POST" enctype="multipart/form-data" autocomplete="off">
-                                            <div class="p-3 mb-2 bg-info text-white text-center">Agregar un nuevo
+                                            <div class="p-3 mb-2 bg-primary text-white text-center">Agregar un nuevo
                                                 odontólogo</div>
                                             <!-- primera fila -->
                                             <div class=" form-group">
@@ -211,6 +222,17 @@ if (isset($_SESSION['id_doctor'])) {
     <script src="../src/css/lib/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="../src/js/calendar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            (document.querySelectorAll('.alert .delete') || []).forEach(($delete) => {
+                const $notification = $delete.parentNode;
+
+                $delete.addEventListener('click', () => {
+                    $notification.parentNode.removeChild($notification);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

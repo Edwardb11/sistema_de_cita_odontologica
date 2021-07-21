@@ -35,6 +35,7 @@ if (isset($_SESSION['id_paciente'])) {
      <link rel="stylesheet" href="src/css/owl.carousel.css">
      <link rel="stylesheet" href="src/css/owl.theme.default.min.css">
 
+
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="src/css/tooplate-style.css">
 
@@ -109,6 +110,26 @@ if (isset($_SESSION['id_paciente'])) {
 
           </div>
      </section>
+     <!-- Mensaje de alerta -->
+
+
+     <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+
+               <?php if (isset($_SESSION['MensajeTexto'])) { ?>
+                    <div class="alert <?php echo $_SESSION['MensajeTipo'] ?>" role="alert">
+                         <?php echo $_SESSION['MensajeTexto'] ?>
+                         <button class="delete"><i class="fa fa-times"></i></button>
+                    </div>
+
+               <?php $_SESSION['MensajeTexto'] = null;
+                    $_SESSION['MensajeTipo'] = null;
+               }
+               ?>
+
+          </div>
+     </div>
+
 
 
      <!-- HOME -->
@@ -260,7 +281,6 @@ if (isset($_SESSION['id_paciente'])) {
           </div>
      </section>
 
-
      <!-- MAKE AN APPOINTMENT -->
      <section id="appointment" data-stellar-background-ratio="3">
           <div class="container">
@@ -332,6 +352,7 @@ if (isset($_SESSION['id_paciente'])) {
                                    </div>
                               </div>
                          </form>
+
                     </div>
 
                </div>
@@ -530,7 +551,17 @@ if (isset($_SESSION['id_paciente'])) {
                </div>
           </div>
      </footer>
+     <script>
+          document.addEventListener('DOMContentLoaded', () => {
+               (document.querySelectorAll('.alert .delete') || []).forEach(($delete) => {
+                    const $notification = $delete.parentNode;
 
+                    $delete.addEventListener('click', () => {
+                         $notification.parentNode.removeChild($notification);
+                    });
+               });
+          });
+     </script>
      <!-- SCRIPTS -->
      <script src="src/js/jquery.js"></script>
      <script src="src/js/bootstrap.min.js"></script>
@@ -541,6 +572,17 @@ if (isset($_SESSION['id_paciente'])) {
      <script src="src/js/owl.carousel.min.js"></script>
      <script src="src/js/custom.js"></script>
 
+     <script>
+          document.addEventListener('DOMContentLoaded', () => {
+               (document.querySelectorAll('.alert .delete') || []).forEach(($delete) => {
+                    const $notification = $delete.parentNode;
+
+                    $delete.addEventListener('click', () => {
+                         $notification.parentNode.removeChild($notification);
+                    });
+               });
+          });
+     </script>
 </body>
 
 </html>
