@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-07-2021 a las 23:20:24
+-- Tiempo de generación: 21-07-2021 a las 23:18:14
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -31,7 +31,6 @@ CREATE TABLE `citas` (
   `id_cita` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `id_doctor` int(11) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
   `fecha_cita` date NOT NULL,
   `hora_cita` time NOT NULL,
   `id_consultas` int(11) NOT NULL,
@@ -42,12 +41,19 @@ CREATE TABLE `citas` (
 -- Volcado de datos para la tabla `citas`
 --
 
-INSERT INTO `citas` (`id_cita`, `id_paciente`, `id_doctor`, `fecha_nacimiento`, `fecha_cita`, `hora_cita`, `id_consultas`, `estado`) VALUES
-(1, 2, 1, '2001-07-06', '2021-07-12', '03:00:00', 2, 'I'),
-(2, 1, 2, '2021-07-02', '2021-07-02', '12:30:00', 1, 'A'),
-(3, 2, 1, '2001-07-05', '2021-07-02', '22:12:00', 1, 'A'),
-(4, 2, 1, '2021-07-06', '2021-07-16', '20:02:00', 1, 'I'),
-(5, 2, 1, '2001-07-11', '2021-07-18', '12:34:00', 3, 'A');
+INSERT INTO `citas` (`id_cita`, `id_paciente`, `id_doctor`, `fecha_cita`, `hora_cita`, `id_consultas`, `estado`) VALUES
+(1, 2, 1, '2021-07-12', '11:00:00', 2, 'A'),
+(2, 1, 2, '2021-07-02', '12:00:00', 1, 'I'),
+(3, 2, 1, '2021-07-02', '10:00:00', 1, 'I'),
+(4, 2, 1, '2021-07-16', '11:00:00', 1, 'I'),
+(5, 2, 1, '2021-07-18', '12:34:00', 3, 'I'),
+(6, 2, 2, '2021-07-04', '11:22:00', 8, 'I'),
+(7, 10, 2, '2021-07-12', '11:00:00', 5, 'I'),
+(8, 2, 1, '2021-07-21', '02:01:00', 1, 'I'),
+(9, 2, 1, '2021-07-21', '12:03:00', 1, 'I'),
+(10, 2, 1, '2021-07-11', '15:02:00', 1, 'I'),
+(18, 2, 1, '2021-07-06', '12:00:00', 1, 'I'),
+(19, 2, 1, '2021-07-01', '11:02:00', 1, 'I');
 
 -- --------------------------------------------------------
 
@@ -100,7 +106,8 @@ CREATE TABLE `doctor` (
 INSERT INTO `doctor` (`id_doctor`, `nombreD`, `apellido`, `sexo`, `fecha_nacimiento`, `telefono`, `correo_eletronico`, `clave`, `id_especialidad`) VALUES
 (1, 'Francisco', 'Rosario', 'Masculino', '2001-07-05', '8097983519', 'franciscoRosario@hotmail.com', '1234', 2),
 (2, 'Stewar', 'Diaz', 'Masculino', '2000-07-16', '8099891736', 'Stewar@company.com', '1234', 3),
-(3, 'Alernis', 'Hernandez', 'Femenino', '2000-07-13', '8097686677', 'arlenis@company.com', '1234', 4);
+(3, 'Alernis', 'Hernandez', 'Femenino', '2000-07-13', '8097686677', 'arlenis@company.com', '1234', 4),
+(7, 'Juan', 'Perez', 'Masculino', '2000-07-20', '809889013', 'juan@hotmail.com', '1234', 5);
 
 -- --------------------------------------------------------
 
@@ -135,6 +142,8 @@ CREATE TABLE `pacientes` (
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `telefono` varchar(50) NOT NULL,
+  `sexo` varchar(60) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
   `correo_electronico` varchar(255) NOT NULL,
   `clave` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -143,11 +152,10 @@ CREATE TABLE `pacientes` (
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id_paciente`, `nombre`, `apellido`, `telefono`, `correo_electronico`, `clave`) VALUES
-(1, 'Edward', 'Brito Diaz', '8498779910', 'edwardbrito11@hotmail.com', '12'),
-(2, 'Yessica', 'Villavizar', '891892281', 'yessicavillavizar@hotmail.com', '12'),
-(7, ' Villavizar', '', '', '', ''),
-(8, ' Villavizar', '', '', '', '');
+INSERT INTO `pacientes` (`id_paciente`, `nombre`, `apellido`, `telefono`, `sexo`, `fecha_nacimiento`, `correo_electronico`, `clave`) VALUES
+(1, 'Edward', 'Brito Diaz', '8498779910', 'Masculino', '2001-07-11', 'edwardbrito11@hotmail.com', '12'),
+(2, '              Yessica', '              Villavizar', '891892281', 'Femenino', '2001-11-06', 'yessicavillavizar@hotmail.com', '12'),
+(10, '    Jose Alberto', '    Nuñez', '89098878193', 'Masculino', '2000-07-07', 'jose@hotmail.com', '122');
 
 -- --------------------------------------------------------
 
@@ -167,14 +175,7 @@ CREATE TABLE `paciente_diagnostico` (
 --
 
 INSERT INTO `paciente_diagnostico` (`id_diagnostico`, `id_cita`, `descripcion`, `medicina`) VALUES
-(1, 2, 'aa', 'aa'),
-(2, 2, 'a', 'a'),
-(3, 2, 'a', 'a'),
-(4, 2, 'Hola', 'Hola'),
-(5, 3, 'hahahahahah', 'hahahahah'),
-(6, 2, 'aahha', 'hahaha'),
-(7, 2, 'a', 'a'),
-(8, 2, 'a', 'a');
+(11, 1, 'ahha', 'ahha');
 
 --
 -- Índices para tablas volcadas
@@ -187,7 +188,7 @@ ALTER TABLE `citas`
   ADD PRIMARY KEY (`id_cita`),
   ADD KEY `consultas-pacientes` (`id_consultas`),
   ADD KEY `doctor-cita` (`id_doctor`),
-  ADD KEY `paciente-cita` (`id_paciente`);
+  ADD KEY `id_paciente` (`id_paciente`);
 
 --
 -- Indices de la tabla `consultas`
@@ -229,7 +230,7 @@ ALTER TABLE `paciente_diagnostico`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
@@ -241,7 +242,7 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT de la tabla `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id_doctor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_doctor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `especialidad`
@@ -253,13 +254,13 @@ ALTER TABLE `especialidad`
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente_diagnostico`
 --
 ALTER TABLE `paciente_diagnostico`
-  MODIFY `id_diagnostico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_diagnostico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -270,7 +271,8 @@ ALTER TABLE `paciente_diagnostico`
 --
 ALTER TABLE `citas`
   ADD CONSTRAINT `consultas-pacientes` FOREIGN KEY (`id_consultas`) REFERENCES `consultas` (`id_consultas`),
-  ADD CONSTRAINT `doctor-cita` FOREIGN KEY (`id_doctor`) REFERENCES `doctor` (`id_doctor`);
+  ADD CONSTRAINT `doctor-cita` FOREIGN KEY (`id_doctor`) REFERENCES `doctor` (`id_doctor`),
+  ADD CONSTRAINT `id_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`);
 
 --
 -- Filtros para la tabla `doctor`
@@ -282,8 +284,7 @@ ALTER TABLE `doctor`
 -- Filtros para la tabla `paciente_diagnostico`
 --
 ALTER TABLE `paciente_diagnostico`
-  ADD CONSTRAINT `id_cita_fk` FOREIGN KEY (`id_cita`) REFERENCES `citas` (`id_cita`),
-  ADD CONSTRAINT `id_doctor_fk` FOREIGN KEY (`id_cita`) REFERENCES `doctor` (`id_doctor`);
+  ADD CONSTRAINT `id_cita_fk` FOREIGN KEY (`id_cita`) REFERENCES `citas` (`id_cita`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
