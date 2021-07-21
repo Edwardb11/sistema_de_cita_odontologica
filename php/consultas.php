@@ -106,7 +106,7 @@ function MostrarCitas($link, $id)
 	                p.nombre,
 	                p.apellido,
 	                d.nombreD,
-	                c.fecha_nacimiento,
+	                p.fecha_nacimiento,
 	                c.fecha_cita,
 	                c.hora_cita,
                     con.tipo, 

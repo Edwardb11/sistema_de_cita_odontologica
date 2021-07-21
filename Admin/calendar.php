@@ -10,7 +10,7 @@ if (isset($_SESSION['id_doctor'])) {
 } else {
 	$_SESSION['MensajeTexto'] = "Error acceso al sistema  no registrado.";
 	$_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
-	header("Location: ./index.php");
+	header("Location: ../index.php");
 }
 ?>
 <!DOCTYPE html>
