@@ -143,3 +143,63 @@ function ConsultarCitas($link, $id)
         $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
     }
 }
+
+
+function CitasPendientesFPDF($link, $id)
+{
+    $query = "SELECT  
+                    c.id_cita,
+                    c.estado,
+	                p.nombre,
+	                p.apellido,
+	                d.nombreD,
+	                p.fecha_nacimiento,
+	                c.fecha_cita,
+	                c.hora_cita,
+                    con.tipo, 
+                    c.estado,
+                 year(curdate()), year(p.fecha_nacimiento) ,year(CURDATE())-year(p.fecha_nacimiento) as años,
+                 pd.descripcion
+
+            FROM 
+                    `citas`   as c 
+            LEFT JOIN `pacientes` as p ON  p.id_paciente  =  c.id_paciente
+            LEFT JOIN `doctor` as d ON  d.id_doctor  =  c.id_doctor
+            LEFT JOIN `consultas` as con ON  con.id_consultas  =  c.id_consultas
+            LEFT JOIN `paciente_diagnostico` as pd ON  pd.id_cita  =  c.id_cita
+            WHERE   c.estado = 'I' and p.id_paciente = $id;
+          ;
+            ;";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
+
+
+function CitasRealizadasFPDF($link, $id)
+{
+    $query = "SELECT  
+                    c.id_cita,
+                    c.estado,
+	                p.nombre,
+	                p.apellido,
+	                d.nombreD,
+	                p.fecha_nacimiento,
+	                c.fecha_cita,
+	                c.hora_cita,
+                    con.tipo, 
+                    c.estado,
+                 year(curdate()), year(p.fecha_nacimiento) ,year(CURDATE())-year(p.fecha_nacimiento) as años,
+                 pd.descripcion
+
+            FROM 
+                    `citas`   as c 
+            LEFT JOIN `pacientes` as p ON  p.id_paciente  =  c.id_paciente
+            LEFT JOIN `doctor` as d ON  d.id_doctor  =  c.id_doctor
+            LEFT JOIN `consultas` as con ON  con.id_consultas  =  c.id_consultas
+            LEFT JOIN `paciente_diagnostico` as pd ON  pd.id_cita  =  c.id_cita
+            WHERE   c.estado = 'A' and p.id_paciente = $id;
+          ;
+            ;";
+    $resultado = mysqli_query($link, $query);
+    return $resultado;
+}
