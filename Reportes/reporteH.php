@@ -31,7 +31,7 @@ class PDF extends FPDF
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $bandera = true; //Para alternar el relleno
         // $this->Cell(40, 10, 'Paciente', 1, 0, 'C', $bandera);
-        $this->Cell(60, 10, 'Consultas Pendientes', 1, 0, 'C', $bandera);
+        $this->Cell(60, 10, 'Consultas Realizadas', 1, 0, 'C', $bandera);
         $this->Cell(30, 10, 'Fecha', 1, 0, 'C', $bandera);
         $this->Cell(30, 10, 'Hora', 1, 0, 'C', $bandera);
         $this->Cell(30, 10, 'Doctor', 1, 1, 'C', $bandera);
@@ -49,7 +49,7 @@ class PDF extends FPDF
 }
 
 
-$resultado = CitasPendientesFPDF($link, $vUsuario);
+$resultado = CitasRealizadasFPDF($link, $vUsuario);
 //$pdf->Ln(50);
 $pdf = new PDF();
 $pdf->AliasNbPages();

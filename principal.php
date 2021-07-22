@@ -318,11 +318,12 @@ if (isset($_SESSION['id_paciente'])) {
                                    </script>
                                    <div class="col-md-6 col-sm-6">
                                         <label for="fecha_cita">Fecha de la cita</label>
-                                        <input type="date" class="form-control" name="fecha_cita" id="fecha_cita" required>
+                                        <input type="date" class="form-control" name="fecha_cita" id="fecha_cita" min="<?php echo date("Y-m-d", strtotime(date("Y-m-d")));  ?>" required>
+
                                    </div>
                                    <div class="col-md-6 col-sm-6">
                                         <label for="hora">Hora de la cita</label>
-                                        <input type="time" value="" class="form-control" name="hora" id="hora" required>
+                                        <input type="time" class="form-control" min="08:00" max="19:00" name="hora" id="hora" required>
 
                                    </div>
                                    <div class="col-md-6 col-sm-6">
@@ -441,8 +442,9 @@ if (isset($_SESSION['id_paciente'])) {
                                         <hr>
                                         <div class="row">
                                              <div class="col-sm-12">
-                                                  <a class="btn btn-success " href="./editar_paciente.php">Editar perfil</a>
-                                                  <a class="btn btn-info " target="__blank" href="#">Vizualizar historial</a>
+                                                  <a class="btn btn-primary " href="./editar_paciente.php">Editar perfil</a>
+                                                  <a class="btn btn-info " target="__blank" href="./Reportes/reporte.php">Vizualizar consultas pendientes</a>
+                                                  <a class="btn btn-info text-dark " target="__blank" href="./Reportes/reporteH.php">Vizualizar historial</a>
                                              </div>
                                         </div>
                                    </div>
@@ -583,6 +585,7 @@ if (isset($_SESSION['id_paciente'])) {
                });
           });
      </script>
+
 </body>
 
 </html>
