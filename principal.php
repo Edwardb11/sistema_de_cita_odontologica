@@ -375,6 +375,23 @@ if (isset($_SESSION['id_paciente'])) {
                                                   <p class="text-secondary mb-1">Perfect Teeth</p>
                                                   <p class="text-muted font-size-sm"><?php echo $row['correo_electronico']; ?></p>
 
+                                                  <div class="card  bg-light" style="margin-top: 20%;">
+                                                       <div class="card-header">
+                                                            <h4> <strong>Acciones</strong></h4>
+                                                       </div>
+                                                       <div class="card-body">
+
+                                                            <label>Editar perfil</label>
+                                                            <a class="btn btn-primary " href="./editar_paciente.php"> <i class="fa fa-edit"></i> </a> <br>
+                                                            <label>Vizualizar consultas pendientes</label>
+                                                            <a class="btn btn-success " target="__blank" href="./Reportes/reporte.php"><i class="fa fa-eye"></i> </a> <br>
+                                                            <label>Vizualizar historial</label>
+                                                            <a class="btn btn-success text-dark " target="__blank" href="./Reportes/reporteH.php"><i class="fa fa-history"></i></a> <br>
+                                                       </div>
+                                                       <div class="card-footer text-muted">
+
+                                                       </div>
+                                                  </div>
                                              </div>
                                         </div>
                                    </div>
@@ -438,15 +455,6 @@ if (isset($_SESSION['id_paciente'])) {
                                              </div>
                                         </div>
                                         <hr>
-
-                                        <hr>
-                                        <div class="row">
-                                             <div class="col-sm-12">
-                                                  <a class="btn btn-primary " href="./editar_paciente.php">Editar perfil</a>
-                                                  <a class="btn btn-info " target="__blank" href="./Reportes/reporte.php">Vizualizar consultas pendientes</a>
-                                                  <a class="btn btn-info text-dark " target="__blank" href="./Reportes/reporteH.php">Vizualizar historial</a>
-                                             </div>
-                                        </div>
                                    </div>
                                    <br>
                               </div>
