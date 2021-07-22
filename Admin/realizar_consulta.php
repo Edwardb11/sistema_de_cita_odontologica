@@ -118,7 +118,7 @@ if (!empty($_GET['id'])) {
                                                     <!-- segunda columna -->
                                                     <div class=" col-md-4">
                                                         <label for="apellidos">Medicina </label>
-                                                        <input class="form-control" type="text" name="Medicina" placeholder="Medicina opcional" required>
+                                                        <input class="form-control" type="text" name="Medicina" placeholder="Medicina opcional">
                                                     </div>
                                                 </div>
 
