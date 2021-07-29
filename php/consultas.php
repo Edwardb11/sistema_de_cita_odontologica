@@ -189,7 +189,8 @@ function CitasRealizadasFPDF($link, $id)
                     con.tipo, 
                     c.estado,
                  year(curdate()), year(p.fecha_nacimiento) ,year(CURDATE())-year(p.fecha_nacimiento) as años,
-                 pd.descripcion
+                 pd.descripcion,
+                 pd.medicina
 
             FROM 
                     `citas`   as c 

@@ -32,9 +32,11 @@ class PDF extends FPDF
         $bandera = true; //Para alternar el relleno
         // $this->Cell(40, 10, 'Paciente', 1, 0, 'C', $bandera);
         $this->Cell(60, 10, 'Consultas Realizadas', 1, 0, 'C', $bandera);
-        $this->Cell(30, 10, 'Fecha', 1, 0, 'C', $bandera);
-        $this->Cell(30, 10, 'Hora', 1, 0, 'C', $bandera);
-        $this->Cell(30, 10, 'Doctor', 1, 1, 'C', $bandera);
+        $this->Cell(25, 10, 'Fecha', 1, 0, 'C', $bandera);
+        $this->Cell(25, 10, 'Hora', 1, 0, 'C', $bandera);
+        $this->Cell(25, 10, 'Doctor', 1, 0, 'C', $bandera);
+        $this->Cell(32, 10, 'Descripcion', 1, 0, 'C', $bandera);
+        $this->Cell(27, 10, 'Mecicina', 1, 1, 'C', $bandera);
     }
     // Pie de página
     function Footer()
@@ -69,13 +71,13 @@ $pdf->SetXY(0, 28);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(30, 2, "Nombre: ", 0, 0, 'C', 0);
 $pdf->SetFont('Arial', '', 10);
-$pdf->Cell(-10, 2,  utf8_decode($row1['nombre']), 0, 0, 'C', 0);
+$pdf->Cell(-2, 2,  utf8_decode($row1['nombre']), 0, 0, 'C', 0);
 //apellido
 $pdf->Ln(5);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(10, 2, "Apellido: ", 0, 0, 'C', 0);
 $pdf->SetFont('Arial', '', 10);
-$pdf->Cell(12, 2,  utf8_decode($row1['apellido']), 0, 0, 'C', 0);
+$pdf->Cell(20, 2,  utf8_decode($row1['apellido']), 0, 0, 'C', 0);
 
 //sexo
 $pdf->Ln(5);
@@ -101,8 +103,10 @@ while ($row = $resultado->fetch_assoc()) {
 
     $pdf->Cell(60, 10, utf8_decode($row['tipo']), 1, 0, 'C', 0);
 
-    $pdf->Cell(30, 10, $row['fecha_cita'], 1, 0, 'C', 0);
-    $pdf->Cell(30, 10, $row['hora_cita'], 1, 0, 'C', 0);
-    $pdf->Cell(30, 10, $row['nombreD'], 1, 1, 'C', 0);
+    $pdf->Cell(25, 10, $row['fecha_cita'], 1, 0, 'C', 0);
+    $pdf->Cell(25, 10, $row['hora_cita'], 1, 0, 'C', 0);
+    $pdf->Cell(25, 10, $row['nombreD'], 1, 0, 'C', 0);
+    $pdf->Cell(32, 10, $row['descripcion'], 1, 0, 'C', 0);
+    $pdf->Cell(27, 10, $row['medicina'], 1, 1, 'C', 0);
 }
 $pdf->Output();
