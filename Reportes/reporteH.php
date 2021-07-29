@@ -36,7 +36,7 @@ class PDF extends FPDF
         $this->Cell(25, 10, 'Hora', 1, 0, 'C', $bandera);
         $this->Cell(25, 10, 'Doctor', 1, 0, 'C', $bandera);
         $this->Cell(32, 10, 'Descripcion', 1, 0, 'C', $bandera);
-        $this->Cell(27, 10, 'Mecicina', 1, 1, 'C', $bandera);
+        $this->Cell(27, 10, 'Medicina', 1, 1, 'C', $bandera);
     }
     // Pie de página
     function Footer()
