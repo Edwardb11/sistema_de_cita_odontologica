@@ -375,7 +375,20 @@ if (isset($_SESSION['id_paciente'])) {
                               <div class="card">
                                    <div class="card-body">
                                         <div class="d-flex flex-column align-items-center text-center">
-                                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                             <?php
+                                             if ($row['sexo'] == 'Masculino') {
+                                             ?>
+                                                  <img src="./src/img/iconoH.jpg" class="rounded-circle" width="150">
+
+                                             <?php
+                                             } elseif ($row['sexo'] == 'Femenino') {
+                                             ?>
+                                                  <img src="./src/img/iconoM.jpg" class="rounded-circle" width="150">
+                                             <?php
+                                             }
+                                             ?>
+
+
                                              <div class="mt-3">
                                                   <h3 class="name"><?php echo $row['nombre'] . ' ' . $row['apellido']; ?> </h3>
                                                   <p class="text-secondary mb-1">Perfect Teeth</p>
