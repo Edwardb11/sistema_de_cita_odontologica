@@ -63,9 +63,9 @@ if (isset($_SESSION['id_paciente'])) {
                <div class="row">
                     <div class="col-md-4 col-sm-10">
                          <p><?php if ($row['sexo'] == 'Masculino') {
-                                   echo "Bienvenido" . ' ' . $row['nombre'];
+                                   echo "Bienvenido" . ' ' . $row['nombre'] . ' ' . $row['apellido'];
                               } else {
-                                   echo  "Bienvenida"   . ' ' .  $row['nombre'] . $row['apellido'];
+                                   echo "Bienvenida" . ' ' . $row['nombre'] . ' ' . $row['apellido'];
                               } ?> </p>
                     </div>
 

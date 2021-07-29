@@ -64,19 +64,17 @@ $pdf->SetFont('Arial', 'I', 8);
 $pdf->Cell(65, 5, "Historial clinico -- Perfect Teeth  -- ID paciente " . utf8_decode($row1['id_paciente']), 0, 0, 'C', 0);
 // $pdf->Cell(290, 5,  "ID_paciente " . utf8_decode($row1['id_paciente']), 0, 0, 'C', 0);
 $pdf->SetXY(0, 28);
-
 //nombre
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(30, 2, "Nombre: ", 0, 0, 'C', 0);
 $pdf->SetFont('Arial', '', 10);
-$pdf->Cell(-2, 2,  utf8_decode($row1['nombre']), 0, 0, 'C', 0);
+$pdf->Cell(10, 2,  utf8_decode($row1['nombre']), 0, 0, 'C', 0);
 //apellido
 $pdf->Ln(5);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(10, 2, "Apellido: ", 0, 0, 'C', 0);
 $pdf->SetFont('Arial', '', 10);
-$pdf->Cell(20, 2,  utf8_decode($row1['apellido']), 0, 0, 'C', 0);
-
+$pdf->Cell(25, 2,  utf8_decode($row1['apellido']), 0, 0, 'C', 0);
 //sexo
 $pdf->Ln(5);
 $pdf->SetFont('Arial', 'B', 10);
