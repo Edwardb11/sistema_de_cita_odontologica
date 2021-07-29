@@ -57,9 +57,12 @@ if (isset($_SESSION['id_paciente'])) {
      <header>
           <div class="container">
                <div class="row">
-
                     <div class="col-md-4 col-sm-10">
-                         <p>Bienvenido <strong><?php echo utf8_decode($row['nombre']); ?> </strong></p>
+                         <p><?php if ($row['sexo'] == 'Masculino') {
+                                   echo "Bienvenido" . ' ' . $row['nombre'];
+                              } else {
+                                   echo  "Bienvenida"   . ' ' .  $row['nombre'] . $row['apellido'];
+                              } ?> </p>
                     </div>
 
                     <div class="col-md-8 col-sm-10 ">
