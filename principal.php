@@ -34,11 +34,15 @@ if (isset($_SESSION['id_paciente'])) {
      <link rel="stylesheet" href="src/css/animate.css">
      <link rel="stylesheet" href="src/css/owl.carousel.css">
      <link rel="stylesheet" href="src/css/owl.theme.default.min.css">
-
-
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="src/css/tooplate-style.css">
-
+     <!-- Datepicker libreria jqueryui para calendario -->
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="/resources/demos/style.css">
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script src="./src/js/Datepicker.js">
+     </script>
 </head>
 
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
@@ -117,7 +121,7 @@ if (isset($_SESSION['id_paciente'])) {
 
 
      <div class="row">
-          <div class="col-md-2 col-md-offset-5">
+          <div class="col-md-3 col-md-offset-5">
 
                <?php if (isset($_SESSION['MensajeTexto'])) { ?>
                     <div class="alert <?php echo $_SESSION['MensajeTipo'] ?>" role="alert">
@@ -283,7 +287,6 @@ if (isset($_SESSION['id_paciente'])) {
                </div>
           </div>
      </section>
-
      <!-- MAKE AN APPOINTMENT -->
      <section id="appointment" data-stellar-background-ratio="3">
           <div class="container">
@@ -319,9 +322,10 @@ if (isset($_SESSION['id_paciente'])) {
                                    </div>
 
                                    </script>
-                                   <div class="col-md-6 col-sm-6">
+                                   <div class="col-md-6 col-sm-6" id='datepicker1'>
                                         <label for="fecha_cita">Fecha de la cita</label>
-                                        <input type="date" class="form-control" name="fecha_cita" id="fecha_cita" min="<?php echo date("Y-m-d", strtotime(date("Y-m-d")));  ?>" required>
+
+                                        <input type="text" id="fecha_cita" class="form-control" name="fecha_cita" required>
 
                                    </div>
                                    <div class="col-md-6 col-sm-6">
@@ -525,7 +529,7 @@ if (isset($_SESSION['id_paciente'])) {
                                    <h4 class="wow fadeInUp" data-wow-delay="0.4s">Horario de
                                         apertura</h4>
                                    <p>Lunes - Viernes <span>08:00 AM - 7:00 PM</span></p>
-                                   <p>Sábado <span>08:00 AM - 5:00 PM</span></p>
+                                   <p>Sábado <span>Cerrado</span></p>
                                    <p>Domingo <span>Cerrado</span></p>
                               </div>
 
@@ -576,7 +580,6 @@ if (isset($_SESSION['id_paciente'])) {
           });
      </script>
      <!-- SCRIPTS -->
-     <script src="src/js/jquery.js"></script>
      <script src="src/js/bootstrap.min.js"></script>
      <script src="src/js/jquery.sticky.js"></script>
      <script src="src/js/jquery.stellar.min.js"></script>
@@ -596,7 +599,6 @@ if (isset($_SESSION['id_paciente'])) {
                });
           });
      </script>
-
 </body>
 
 </html>
