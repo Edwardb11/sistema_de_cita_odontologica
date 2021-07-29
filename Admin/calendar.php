@@ -73,12 +73,14 @@ if (isset($_SESSION['id_doctor'])) {
 				eventLimit: true, // allow "more" link when too many events 
 				events: [
 					<?php
+
 					while ($row1 = mysqli_fetch_array($resultadoDentistas)) {
 					?> {
+
 							id: '<?php echo $row1['id_cita']  ?>',
 							title: '<?php echo $row1['tipo']  ?>',
 							description: '<?php echo  'El paciente ' . $row1['nombre'] . ' ha realizado una consulta de ' . $row1['tipo'] . '  con el doctor ' . $row1['nombreD'] . '.' . '<br>' . 'Fecha de la cita: ' . $row1['fecha_cita']  . '<br>' . 'Hora de la cita: ' . $row1['hora_cita']    ?>',
-							start: '<?php echo $row1['fecha_cita']; ?>',
+							start: '<?php echo $row1['fecha_cita'] ?>',
 							textColor: 'White',
 							display: 'backgr'
 

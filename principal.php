@@ -322,10 +322,9 @@ if (isset($_SESSION['id_paciente'])) {
                                    </div>
 
                                    </script>
-                                   <div class="col-md-6 col-sm-6" id='datepicker1'>
+                                   <div class="col-md-6 col-sm-6">
                                         <label for="fecha_cita">Fecha de la cita</label>
-
-                                        <input type="text" id="fecha_cita" class="form-control" name="fecha_cita" required>
+                                        <input type="text" class="form-control" name="fecha_cita" id="fecha_cita" required>
 
                                    </div>
                                    <div class="col-md-6 col-sm-6">

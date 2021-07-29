@@ -21,6 +21,8 @@ try {
                 $id_paciente = $_SESSION['id_paciente'];
                 $id_doctor11 = $_POST['dentistas'];
                 $fecha_cita = filter_var($_POST['fecha_cita'], FILTER_SANITIZE_STRING);  //para filtrar la data
+
+
                 $hora = filter_var($_POST['hora'], FILTER_SANITIZE_STRING);  //para filtrar la data
                 $id_consultas = $_POST['consultas'];
                 $query = " 
@@ -30,7 +32,7 @@ try {
             if (!$resultado) {
                 $_SESSION['MensajeTexto'] = "Error insertando el contenido";
                 $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
-                //header("Location: ./index.php");
+                //header("Location: ../principal.php");
                 die("Error en base de datos: " . mysqli_error($link));
             } else {
                 $_SESSION['MensajeTexto'] = "Cita realizada con exito!!";
