@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-07-2021 a las 23:18:14
+-- Tiempo de generación: 29-07-2021 a las 19:09:20
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -43,17 +43,25 @@ CREATE TABLE `citas` (
 
 INSERT INTO `citas` (`id_cita`, `id_paciente`, `id_doctor`, `fecha_cita`, `hora_cita`, `id_consultas`, `estado`) VALUES
 (1, 2, 1, '2021-07-12', '11:00:00', 2, 'A'),
-(2, 1, 2, '2021-07-02', '12:00:00', 1, 'I'),
-(3, 2, 1, '2021-07-02', '10:00:00', 1, 'I'),
+(2, 1, 2, '2021-07-02', '12:00:00', 1, 'A'),
+(3, 2, 1, '2021-07-08', '10:00:00', 1, 'I'),
 (4, 2, 1, '2021-07-16', '11:00:00', 1, 'I'),
-(5, 2, 1, '2021-07-18', '12:34:00', 3, 'I'),
-(6, 2, 2, '2021-07-04', '11:22:00', 8, 'I'),
-(7, 10, 2, '2021-07-12', '11:00:00', 5, 'I'),
+(5, 2, 1, '2021-07-19', '12:34:00', 3, 'I'),
+(6, 2, 2, '2021-07-13', '11:22:00', 8, 'I'),
+(7, 10, 2, '2021-07-15', '11:00:00', 5, 'I'),
 (8, 2, 1, '2021-07-21', '02:01:00', 1, 'I'),
 (9, 2, 1, '2021-07-21', '12:03:00', 1, 'I'),
-(10, 2, 1, '2021-07-11', '15:02:00', 1, 'I'),
-(18, 2, 1, '2021-07-06', '12:00:00', 1, 'I'),
-(19, 2, 1, '2021-07-01', '11:02:00', 1, 'I');
+(10, 2, 1, '2021-07-15', '15:02:00', 1, 'I'),
+(18, 2, 1, '2021-07-22', '12:00:00', 1, 'I'),
+(19, 2, 1, '2021-07-20', '11:02:00', 1, 'I'),
+(20, 10, 1, '2021-07-31', '10:01:00', 1, 'I'),
+(21, 10, 3, '2021-08-11', '10:10:00', 4, 'I'),
+(22, 10, 1, '1970-01-01', '08:02:00', 1, 'I'),
+(23, 10, 3, '2021-08-18', '10:10:00', 1, 'I'),
+(24, 10, 7, '2021-08-27', '10:10:00', 1, 'I'),
+(25, 1, 3, '2021-07-30', '10:10:00', 4, 'I'),
+(26, 1, 7, '2021-08-19', '12:00:00', 1, 'I'),
+(27, 1, 7, '2021-08-27', '11:00:00', 2, 'I');
 
 -- --------------------------------------------------------
 
@@ -154,8 +162,8 @@ CREATE TABLE `pacientes` (
 
 INSERT INTO `pacientes` (`id_paciente`, `nombre`, `apellido`, `telefono`, `sexo`, `fecha_nacimiento`, `correo_electronico`, `clave`) VALUES
 (1, 'Edward', 'Brito Diaz', '8498779910', 'Masculino', '2001-07-11', 'edwardbrito11@hotmail.com', '12'),
-(2, '              Yessica', '              Villavizar', '891892281', 'Femenino', '2001-11-06', 'yessicavillavizar@hotmail.com', '12'),
-(10, '    Jose Alberto', '    Nuñez', '89098878193', 'Masculino', '2000-07-07', 'jose@hotmail.com', '122');
+(2, '                    Yessica Maria', '                    Villavizar', '891892281', 'Femenino', '2001-11-06', 'yessicavillavizar@hotmail.com', '12'),
+(10, '      Jose Alberto', '    Nuñez', '89098878193', 'Masculino', '2000-07-07', 'jose@hotmail.com', '122');
 
 -- --------------------------------------------------------
 
@@ -175,7 +183,9 @@ CREATE TABLE `paciente_diagnostico` (
 --
 
 INSERT INTO `paciente_diagnostico` (`id_diagnostico`, `id_cita`, `descripcion`, `medicina`) VALUES
-(11, 1, 'ahha', 'ahha');
+(12, 1, 'Todo bien', 'Listerin'),
+(13, 1, 'Todo bien', ''),
+(14, 2, 'Bien', '');
 
 --
 -- Índices para tablas volcadas
@@ -230,7 +240,7 @@ ALTER TABLE `paciente_diagnostico`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
@@ -260,7 +270,7 @@ ALTER TABLE `pacientes`
 -- AUTO_INCREMENT de la tabla `paciente_diagnostico`
 --
 ALTER TABLE `paciente_diagnostico`
-  MODIFY `id_diagnostico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_diagnostico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas
