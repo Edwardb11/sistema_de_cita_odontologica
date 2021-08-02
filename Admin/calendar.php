@@ -144,7 +144,7 @@ if (isset($_SESSION['id_doctor'])) {
 								<div>
 									<ol class=" breadcrumb bg-white">
 										<li class="breadcrumb-item">
-											<a href="index.html">Inicio</a>
+											<a href="./inicioAdmin.php">Inicio</a>
 										</li>
 										<li class="breadcrumb-item active">
 											Calendario
@@ -154,7 +154,7 @@ if (isset($_SESSION['id_doctor'])) {
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-12 text-info">
-											<div class="p-3 mb-2 bg-info text-white text-center"> Calendario de Citas
+											<div class="p-3 mb-2 bg-primary text-white text-center"> Calendario de Citas
 											</div>
 											<div class="row">
 												<div id="content" class="col-lg-12">
