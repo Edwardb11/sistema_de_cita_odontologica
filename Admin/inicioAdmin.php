@@ -34,7 +34,11 @@ if (isset($_SESSION['id_doctor'])) {
   <!-- Datatable libreria -->
   <link rel="stylesheet" href="../src/js/lib/datatable\css\jquery.dataTables.min.css">
   <link rel="stylesheet" href="../src/js/lib/datatable\css\responsive.dataTables.min.css">
-
+  <script type="text/javascript">
+    function confirmation() {
+      if (!confirm("Realmente desea eliminar esta cita?")) return false;
+    }
+  </script>
   <title>Perfect Teeth </title>
 </head>
 
@@ -97,7 +101,7 @@ if (isset($_SESSION['id_doctor'])) {
                     <div class="col-md-12 text-info">
                       <div class="p-3 mb-2 bg-primary text-white text-center">Citas pendientes</div>
                       <!-- Tablas -->
-                      <div class="col-md-4">
+                      <div class="col-md-7">
                         <?php if (isset($_SESSION['MensajeTexto'])) { ?>
                           <div class="alert <?php echo $_SESSION['MensajeTipo'] ?>" role="alert">
                             <?php echo $_SESSION['MensajeTexto'] ?>
@@ -109,27 +113,24 @@ if (isset($_SESSION['id_doctor'])) {
                         }
                         ?>
                       </div>
-                      <table id="example" class=" table table-striped nowrap responsive " style="width:100%">
+                      <table id="example" class=" table table-striped nowrap responsive ">
                         <thead>
                           <tr>
                             <th>Nombre completo</th>
 
                             <th>Edad</th>
                             <th>Consulta</th>
-                            <th>Fecha de la Cita</th>
-                            <th>Hora de la Cita</th>
+                            <th>Fecha </th>
+                            <th>Hora </th>
                             <!-- <th>Dentista</th> -->
                             <th>Estado</th>
                             <th>Diagnóstico </th>
+                            <th> </th>
                             <th> </th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-
-
-
-
                           //este while va a recorrer en array me va a devolver posicion por posicion lo que 
                           //esta en la variable resultado y de la forma que lo vas hacer es mysqli
                           //es decir crear un arreglo de la forma asociativa cada posicion me lo va a retornar como una columna
@@ -148,6 +149,9 @@ if (isset($_SESSION['id_doctor'])) {
                                     } ?> </td>
                               <td> <?php echo $row['descripcion'] ?> </td>
                               <td> <a class="button is-info" data-toggle="tooltip" data-placement="top" title="Editar" name="editar" href="./realizar_consulta.php?accion=UDT&id=<?php echo $row['id_cita'] ?>"> <i class="fas fa-edit"></i> </a> </td>
+
+
+                              <td> <a class="button text-danger" data-toggle="tooltip" data-placement="top" title="Anular" name="anular" href="../crud/realizar_consultasUPDATE.php?accion=DLT&id=<?php echo $row['id_cita']  ?>&estado=<?php echo $row['estado'] ?>" onclick="return confirmation() "> <i class=" fas fa-trash"> </i> </a> </td>
                             </tr>
                           <?php
                           }

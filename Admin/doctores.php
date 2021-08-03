@@ -29,23 +29,6 @@ if (isset($_SESSION['id_doctor'])) {
 
     <!-- jQuery UI -->
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
-    <!-- <script>
-        function habilitar() {
-
-            var camp1 = document.getElementById("clave");
-            var camp2 = document.getElementById("clave2");
-            var boton = document.getElementById("Guardar");
-
-            if (camp1.value != camp2.value) {
-                boton.disabled = true;
-            } else {
-                boton.disabled = false;
-            }
-
-        }
-    </script> -->
-
-
     <title>Perfect Teeth </title>
     <style>
 
@@ -100,7 +83,7 @@ if (isset($_SESSION['id_doctor'])) {
                             <div>
                                 <ol class=" breadcrumb bg-white">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html">Inicio</a>
+                                        <a href="./inicioAdmin.php">Inicio</a>
                                     </li>
                                     <li class="breadcrumb-item active">
                                         Dentistas
@@ -195,8 +178,8 @@ if (isset($_SESSION['id_doctor'])) {
 
                                                 </div>
 
-                                                <br> <button class="btn btn-success btn-lg " type="submit" name="guardar" id="Guardar" value="Guardar" onkeyup="habilitar()">
-                                                    <i class="far fa-save"></i> Guardar
+                                                <br> <button class="btn btn-success btn-lg " type="submit" name="guardar" id="Guardar" value="Guardar" ">
+                                                    <i class=" far fa-save"></i> Guardar
                                                 </button>
                                         </form>
                                     </div>
