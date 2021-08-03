@@ -111,7 +111,18 @@ if (isset($_SESSION['id_doctor'])) {
 			</div>
 			<div class="side-inner">
 				<div class="profile">
-					<img src="../src/img/admin_user.png" alt="Image" class="img-fluid">
+					<?php
+					if ($row['sexo'] == 'Masculino') {
+					?>
+						<img src="../src/img/odontologo.png" class="rounded-circle" width="150">
+
+					<?php
+					} elseif ($row['sexo'] == 'Femenino') {
+					?>
+						<img src="../src/img/odontologa.png" class="rounded-circle" width="150">
+					<?php
+					}
+					?>
 					<h3 class="name"><?php echo utf8_decode($row['nombreD'] . ' ' . $row['apellido']); ?></h3>
 					<span class="country">Perfect Teeth </span>
 				</div>
