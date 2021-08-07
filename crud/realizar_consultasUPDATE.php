@@ -49,14 +49,16 @@ try {
             $estado = filter_var($_GET['estado'], FILTER_SANITIZE_STRING);  //para filtrar la data
 
             if ($estado != "I") {
-                $query = "DELETE  FROM `citas` where `id_cita` ='$id' "; //para borrar
+                $query1 = "DELETE FROM `paciente_diagnostico` WHERE `id_cita` ='$id'"; //para borrar
+                $query = "DELETE FROM `citas` WHERE `id_cita` ='$id'"; //para borrar
+                $resultado1 = mysqli_query($link, $query1); //Si devuelve True se ejecuto con exito y si no pues no
                 $resultado = mysqli_query($link, $query); //Si devuelve True se ejecuto con exito y si no pues no
 
                 if (!$resultado) {
                     $_SESSION['MensajeTexto'] = "Error borrando la cita ";
                     $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-danger text-white";
                     header("Location: ../admin/inicioAdmin.php ");
-                    // die("Error en base de datos: " . mysqli_error($link));
+                    //die("Error en base de datos: " . mysqli_error($link));
                 } else {
                     $_SESSION['MensajeTexto'] = "Cita borrada con exito";
                     $_SESSION['MensajeTipo'] = "p-3 mb-2 bg-info text-white";
